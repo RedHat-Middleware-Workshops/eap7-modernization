@@ -1,9 +1,13 @@
 = JBoss EAP 7 Red Hat Summit 2016 Lab
-Doc Writer Thomas Qvarnstrom <tqvarnst@redhat.com>
-v0.1, 2016-03-22
-:toc: 
+Thomas Qvarnstrom <tqvarnst@redhat.com>; Marc Zottner <mzottner@redhat.com>
 
-This repository is the used to develop the 2016 Red Hat Summit lab for JBoss EAP 7.
+:sectnums!:
+:toc: left
+:revnumber: 0.1
+:revdate: 2016-03-22
+
+This repository is the used to develop the 2016 Red Hat Summit lab for JBoss EAP 7. The main authors of _{doctitle}_ is *{author}*, Red Hat and *{author_2}*, Red Hat and the current version number is {revnumber} and was create {revdate}.
+
 
 == How this repository is organized
 .This repository has the following directory structure:
@@ -11,4 +15,3 @@ This repository is the used to develop the 2016 Red Hat Summit lab for JBoss EAP
 ** docs - Documentation for the instructor
 * docs - this directory contains documenation and guides to run the labs
 * projects - Contains Maven projects that are used in the lab
-
