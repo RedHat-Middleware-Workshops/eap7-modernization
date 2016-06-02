@@ -1,0 +1,31 @@
+= Modernize your Java EE applications with JBoss EAP
+Thomas Qvarnstrom, Marc Zottner
+
+[cols="1,4", options="header"]
+|===
+2+|  Details 
+| Technology/Product | Red Hat JBoss Enterprise Application Platform 7
+| Difficulty | 2
+| Time | 2 hours
+| Prerequisites | An understanding of Java EE application development
+|===
+
+== Introduction
+
+This is a self-paced lab, aimed at developers using, or wanting to use, Red Hat JBoss Enterprise Application Platform 7.
+
+This is the Lab participant guide, and will walk the particpant through the basics of JBoss EAP 7. It covers:
+
+* bla
+* bla
+** blabla
+
+include::lab1.adoc[]
+include::lab2.adoc[]
+include::lab3.adoc[]
+include::lab4.adoc[]
+include::lab5.adoc[]
+
+
+
+
