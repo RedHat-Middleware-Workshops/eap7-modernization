@@ -20,11 +20,12 @@ This is the Lab participant guide, and will walk the particpant through the basi
 * bla
 ** blabla
 
-include::lab1.adoc[]
-include::lab2.adoc[]
-include::lab3.adoc[]
-include::lab4.adoc[]
-include::lab5.adoc[]
+
+include::exercise1.adoc[]
+include::exercise2.adoc[]
+include::exercise3.adoc[]
+include::exercise4.adoc[]
+include::exercise5.adoc[]
 
 
 
