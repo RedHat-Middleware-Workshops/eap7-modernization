@@ -1,1 +1,51 @@
-== Exercise 3 - XXXXX
+== Exercise 3 - XXX
+
+=== What you will learn
+
+Participants will learn how to ...
+
+Some background information on ...
+
+
+=== Prerequisites
+
+Prerequisites for the lab.
+
+
+=== Major thing
+
+Background on major thing.
+
+Step 1 - Do something::
+Background for step 1.
++
+[source,bash]
+----
+$ ls -elf
+----
+
+Step 2 - Do something else::
+Background for step 2.
++
+[source,bash]
+----
+$ ls -elf
+----
+
+=== Other major thing
+
+Background on other major thing.
+
+
+Step 3 - Something nice::
+Background for step 3.
++
+[source,bash]
+----
+$ ls -elf
+----
+
+
+=== Summary
+
+Brief summary around what we learned.
