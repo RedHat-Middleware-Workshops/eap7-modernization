@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+  <classpathentry kind="src" path="src/main/java" including="**/*.java"/>
+  <classpathentry kind="src" path="src/main/resources" excluding="**/*.java"/>
+  <classpathentry kind="output" path="target/classes"/>
+  <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+  <classpathentry kind="var" path="M2_REPO/org/jboss/msc/jboss-msc/1.2.6.Final/jboss-msc-1.2.6.Final.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/jboss/spec/javax/ejb/jboss-ejb-api_3.2_spec/1.0.0.Final-redhat-1/jboss-ejb-api_3.2_spec-1.0.0.Final-redhat-1.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/jboss/spec/javax/annotation/jboss-annotations-api_1.2_spec/1.0.0.Final-redhat-1/jboss-annotations-api_1.2_spec-1.0.0.Final-redhat-1.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/jboss/eap/wildfly-clustering-singleton-api/7.0.0.GA-redhat-2/wildfly-clustering-singleton-api-7.0.0.GA-redhat-2.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/jboss/eap/wildfly-clustering-api/7.0.0.GA-redhat-2/wildfly-clustering-api-7.0.0.GA-redhat-2.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/wildfly/checkstyle/wildfly-checkstyle-config/1.0.4.Final/wildfly-checkstyle-config-1.0.4.Final.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/jboss/eap/wildfly-clustering-service/7.0.0.GA-redhat-2/wildfly-clustering-service-7.0.0.GA-redhat-2.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/jboss/threads/jboss-threads/2.2.1.Final-redhat-1/jboss-threads-2.2.1.Final-redhat-1.jar"/>
+</classpath>
