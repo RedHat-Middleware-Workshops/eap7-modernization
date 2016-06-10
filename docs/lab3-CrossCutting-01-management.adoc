@@ -1,10 +1,14 @@
-== Lab 1 - Frontend - ...
+== Lab 3 - Cross-cutting - Management
 
 === What you will learn
 
 Participants will learn how to ...
 
 Some background information on ...
+
+=== Some background information
+
+...
 
 
 === Prerequisites

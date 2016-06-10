@@ -1,10 +1,14 @@
-== Lab 2 - Backend - Concurrency
+== Lab 2 - Backend - Messaging
 
 === What you will learn
 
 Participants will learn how to ...
 
 Some background information on ...
+
+=== Some background information
+
+...
 
 
 === Prerequisites

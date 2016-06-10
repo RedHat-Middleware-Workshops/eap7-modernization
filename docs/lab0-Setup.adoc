@@ -1,10 +1,14 @@
-== Lab 2 - Backend - Messaging
+== Lab 0 - Setup
 
 === What you will learn
 
 Participants will learn how to ...
 
 Some background information on ...
+
+=== Some background information
+
+...
 
 
 === Prerequisites
