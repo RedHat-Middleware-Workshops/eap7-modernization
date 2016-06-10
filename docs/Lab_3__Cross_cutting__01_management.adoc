@@ -1,4 +1,4 @@
-== Exercise 4 - XXX
+== Lab 3 - Cross-cutting - Management
 
 === What you will learn
 

@@ -1,4 +1,4 @@
-== Exercise 1 - Setup
+== Lab 2 - Backend - Batch
 
 === What you will learn
 

@@ -1,4 +1,4 @@
-== Exercise 5 - XXX
+== Lab 0 - Setup
 
 === What you will learn
 

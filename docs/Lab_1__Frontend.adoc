@@ -1,4 +1,4 @@
-== Exercise 3 - XXX
+== Lab 1 - Frontend - ...
 
 === What you will learn
 

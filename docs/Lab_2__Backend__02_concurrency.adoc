@@ -1,4 +1,4 @@
-== Exercise 1 - Frontend - ...
+== Lab 2 - Backend - Concurrency
 
 === What you will learn
 
