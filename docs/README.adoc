@@ -23,7 +23,7 @@ This is the Lab participant guide, and will walk the participant through the bas
 
 * Front-end technologies
 
-** include::Lab_1_Frontend.adoc[]
+
 
 * Back-end features
 
@@ -34,3 +34,8 @@ This is the Lab participant guide, and will walk the participant through the bas
 * Cross-cutting concern
 
 ** include::Lab_3_Cross-cutting_01_management.adoc[]
+
+
+
+include::Lab_1_Frontend.adoc[]
+
