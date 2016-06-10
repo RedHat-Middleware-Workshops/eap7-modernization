@@ -18,7 +18,9 @@ This is the Lab participant guide, and will walk the participant through the bas
 
 * Environment setup
 
-** <<Lab_0_[Setup].adoc>>
+** <<Lab_0_[Setup].adoc#>>
+** <<Lab_0__Setup.adoc#>>
+
 
 * Front-end technologies
 
