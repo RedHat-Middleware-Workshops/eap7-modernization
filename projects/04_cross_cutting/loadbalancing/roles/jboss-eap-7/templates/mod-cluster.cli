@@ -1,0 +1,34 @@
+embed-host-controller
+if (outcome==failed) of /host=master/server-config=load-balancer:read-resource
+    /host=master/server-config=server-one:remove
+    /host=master/server-config=server-two:remove
+    /host=master/server-config=server-three:remove
+    /server-group=main-server-group:remove
+    /server-group=other-server-group:remove
+
+    /profile=ha/subsystem=modcluster/mod-cluster-config=configuration:write-attribute(name=advertise-security-key, value=mypassword)
+
+    /server-group=backend-servers:add(profile=ha, socket-binding-group=ha-sockets)
+
+    /host=master/server-config=backend1:add(group=backend-servers, socket-binding-port-offset=100)
+    /host=master/server-config=backend2:add(group=backend-servers, socket-binding-port-offset=200)
+
+    /host=master/server-config=backend1/system-property=server.name:add(boot-time=false, value=backend1)
+    /host=master/server-config=backend2/system-property=server.name:add(boot-time=false, value=backend2)
+
+
+    /profile=default/subsystem=undertow/configuration=filter/mod-cluster=modcluster:add(management-socket-binding=http, advertise-socket-binding=modcluster, security-key=mypassword)
+
+    /profile=default/subsystem=undertow/server=default-server/host=default-host/filter-ref=modcluster:add
+    /socket-binding-group=standard-sockets/socket-binding=modcluster:add(multicast-port=23364, multicast-address=224.0.1.105)
+
+    /server-group=load-balancer:add(profile=default, socket-binding-group=standard-sockets)
+    /host=master/server-config=load-balancer:add(group=load-balancer)
+
+    deploy {{ ansible_user_dir }}/clustering-demo.war --server-groups=backend-servers
+
+    /host=master/server-config=backend1:write-attribute(name=auto-start,value=true)
+    /host=master/server-config=backend2:write-attribute(name=auto-start,value=true)
+    /host=master/server-config=load-balancer:write-attribute(name=auto-start,value=true)
+
+end-if

@@ -1,0 +1,6 @@
+---
+# This playbook deploys JBoss servers.
+
+- hosts: localhost
+  roles:
+    - jboss-eap-7
