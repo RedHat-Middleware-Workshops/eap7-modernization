@@ -18,18 +18,18 @@ This is the Lab participant guide, and will walk the participant through the bas
 
 * Environment setup
 
-** include::Lab_0__Setup.adoc[]
+** include::Lab_0_[Setup].adoc[]
 
 * Front-end technologies
 
-* include::Lab_1__Frontend.adoc[]
+* *include::Lab_1_Frontend.adoc[]
 
 * Back-end features
 
-** include::Lab_2__Backend__01_batch.adoc[]
-** include::Lab_2__Backend__02_concurrency.adoc[]
-** include::Lab_2__Backend__03_messaging.adoc[]
+** include::Lab_2_Backend_01_batch.adoc[]
+** include::Lab_2_Backend_02_concurrency.adoc[]
+** include::Lab_2_Backend_03_messaging.adoc[]
 
 * Cross-cutting concern
 
-** include::Lab_3__Cross_cutting__01_management.adoc[]
+** include::Lab_3_Cross-cutting_01_management.adoc[]
