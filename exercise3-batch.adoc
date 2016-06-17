@@ -212,9 +212,15 @@ Enter the connection parameter for the created Batch data-source:
 Then, explore the content of the database (tables JOB_EXECUTION, JOB_INSTANCE, PARTITION_EXECUTION and STEP_EXECUTION). Re-execute the deployed batch application as described in step 4 and see its impact on the content of the job database.
 
 
-Step 8 - Display all job details -> CLI::
+Step 8 - Display all job details over the CLI::
 +
-
+To see even more details about the executed jobs, you can execute the following command over the CLI:
++
+[source,bash]
+----
+[standalone@localhost:9990 /] /deployment=jboss-batch-processing.war/subsystem=batch-jberet:read-resource(recursive=true,include-runtime=true)
+----
++
 
 
 === Links
