@@ -1,4 +1,4 @@
-== Lab 2 - Backend - Batch
+== Exercise 7 - Clustering
 
 === What you will learn
 

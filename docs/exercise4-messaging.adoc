@@ -1,4 +1,4 @@
-== Lab 3 - Cross-cutting - Management
+== Exercise 4 - Messaging
 
 === What you will learn
 

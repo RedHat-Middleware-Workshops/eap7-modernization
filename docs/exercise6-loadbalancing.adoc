@@ -1,4 +1,4 @@
-== Lab 2 - Backend - Messaging
+== Exercise 6 - Load-balancing
 
 === What you will learn
 

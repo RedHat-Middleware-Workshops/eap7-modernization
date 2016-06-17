@@ -1,4 +1,4 @@
-== Lab 1 - Frontend - ...
+== Exercise 3 - Batch
 
 === What you will learn
 

@@ -16,26 +16,18 @@ This is a self-paced lab, aimed at developers using, or wanting to use, Red Hat 
 
 This is the Lab participant guide, and will walk the participant through the basics of JBoss EAP 7. It covers:
 
-* Environment setup
+* Exercise 1 - Environment setup
+* Exercise 2 - Java EE 7 Front-end technologies
+* Exercise 2 - Batch
+* Exercise 3 - Messaging with Artemis
+* Exercise 4 - Concurrency
+* Exercise 5 - Load-balancing
+* Exercise 6 - Clustering
 
-** include::Lab_0_[Setup].adoc
-
-
-* Front-end technologies
-
-
-
-* Back-end features
-
-** include::Lab_2_Backend_01_batch.adoc[]
-** include::Lab_2_Backend_02_concurrency.adoc[]
-** include::Lab_2_Backend_03_messaging.adoc[]
-
-* Cross-cutting concern
-
-** include::Lab_3_Cross-cutting_01_management.adoc[]
-
-
-
-include::Lab_1_Frontend.adoc[]
-
+include::exercise1-setup.adoc[]
+include::exercise2-frontend.adoc[]
+include::exercise3-batch.adoc[]
+include::exercise4-messaging.adoc[]
+include::exercise5-concurrency.adoc[]
+include::exercise6-loadbalancing.adoc[]
+include::exercise7-clustering.adoc[]

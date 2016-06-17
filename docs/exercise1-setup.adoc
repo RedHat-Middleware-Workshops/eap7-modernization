@@ -1,4 +1,4 @@
-== Lab 2 - Backend - Concurrency
+== Exercise 1 - Setup
 
 === What you will learn
 
