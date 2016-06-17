@@ -6,7 +6,7 @@ Thomas Qvarnstrom <tqvarnst@redhat.com>; Marc Zottner <mzottner@redhat.com>
 :revnumber: 0.2
 :revdate: 2016-06-17
 
-This repository is the used to develop the 2016 Red Hat Summit lab for JBoss EAP 7. The main authors of _{doctitle}_ is *{author}*, Red Hat and *{author_2}*, Red Hat and the current version number is {revnumber} and was create {revdate}.
+This repository is the used to develop the 2016 Red Hat Summit lab for JBoss EAP 7. The main authors of _{doctitle}_ is *{author}*, Red Hat and *{author_2}*, Red Hat and the current version ({revnumber}) was updated on {revdate}.
 
 == Lab Overview
 
