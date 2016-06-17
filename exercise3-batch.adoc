@@ -50,8 +50,8 @@ First build the batch-processing project as follows:
 ----
 # Move to the directory of the quickstart
 $ cd projects/03_batch/batch-processing
-# Clean and build the quickstart using 4 threads and generate the eclipse project
-$ mvn -T 4 clean eclipse:clean eclipse:eclipse install
+# Clean and build the quickstart and generate the eclipse project
+$ mvn clean eclipse:clean eclipse:eclipse install
 # Displays the current path (useful for import in JBDS)
 $ pwd
 ----
@@ -190,6 +190,11 @@ Enter the connection parameter for the created Batch data-source:
 |===
 +
 Then, explore the content of the database (tables JOB_EXECUTION, JOB_INSTANCE, PARTITION_EXECUTION and STEP_EXECUTION). Re-execute the deployed batch application as described in step 4 and see its impact on the content of the job database.
+
+
+Step 8 - Display all job details -> CLI::
++
+
 
 
 === Links
