@@ -8,7 +8,7 @@ Doing this exercise, participants will learn:
 * how to monitor Batches in Red Hat JBoss EAP 7
 * how to configure the "batch-jberet" subsystem
 
-=== Background
+=== Background information
 
 ==== What is it?
 
@@ -190,6 +190,7 @@ Enter the connection parameter for the created Batch data-source:
 |===
 +
 Then, explore the content of the database (tables JOB_EXECUTION, JOB_INSTANCE, PARTITION_EXECUTION and STEP_EXECUTION). Re-execute the deployed batch application as described in step 4 and see its impact on the content of the job database.
+
 
 === Links
 

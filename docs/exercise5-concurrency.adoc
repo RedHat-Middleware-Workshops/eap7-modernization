@@ -1,24 +1,18 @@
-== Exercise 5 - Concurrency
+== [Exercise 5] Concurrency
 
 === What you will learn
 
 Participants will learn how to ...
 
+
+=== Background information
+
 Some background information on ...
 
-=== Some background information
 
-...
+=== Lab
 
-
-=== Prerequisites
-
-Prerequisites for the lab.
-
-
-=== Major thing
-
-Background on major thing.
+High-level description of the lab.
 
 Step 1 - Do something::
 Background for step 1.
@@ -36,20 +30,16 @@ Background for step 2.
 $ ls -elf
 ----
 
-=== Other major thing
-
-Background on other major thing.
-
-
-Step 3 - Something nice::
-Background for step 3.
-+
-[source,bash]
-----
-$ ls -elf
-----
-
 
 === Summary
 
 Brief summary around what we learned.
+
+
+=== Links
+
+For more information, please have a look at the following articles and documents:
+
+* a
+* b
+* c
