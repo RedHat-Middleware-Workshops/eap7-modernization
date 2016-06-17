@@ -18,11 +18,12 @@ This is the Lab participant guide, and will walk the participant through the bas
 
 * Exercise 1 - Environment setup
 * Exercise 2 - Java EE 7 Front-end technologies
-* Exercise 2 - Batch Applications
-* Exercise 3 - Messaging with Artemis
-* Exercise 4 - Concurrency
-* Exercise 5 - Load-balancing
-* Exercise 6 - Clustering
+* https://github.com/tqvarnst/jboss-eap7-summit-lab/blob/master/docs/exercise3-batch.adoc[Exercise 3 - Batch Applications]
+* Exercise 4 - Messaging with Artemis
+* Exercise 5 - Concurrency
+* Exercise 6 - Load-balancing
+* Exercise 7 - Clustering
+
 
 include::exercise1-setup.adoc[]
 include::exercise2-frontend.adoc[]
