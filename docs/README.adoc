@@ -18,7 +18,7 @@ This is the Lab participant guide, and will walk the participant through the bas
 
 * Exercise 1 - Environment setup
 * Exercise 2 - Java EE 7 Front-end technologies
-* Exercise 2 - Batch
+* Exercise 2 - Batch Applications
 * Exercise 3 - Messaging with Artemis
 * Exercise 4 - Concurrency
 * Exercise 5 - Load-balancing
