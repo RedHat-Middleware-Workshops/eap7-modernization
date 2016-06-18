@@ -57,7 +57,7 @@ This lab builds on the "helloword-mdb" and "helloword-jms" quickstarts of JBoss 
 
 Step 1 - Build and import the "helloworld-mdb" project in JBDS::
 +
-First build the batch-processing project as follows:
+First build the helloworld-mdb project as follows:
 +
 [source,bash]
 ----
@@ -75,7 +75,7 @@ Import the maven project you just built. (File -> Import -> Existing Projects in
 +
 image::images/03_01_import.png["JBDS import (1/2)",600]
 +
-image::images/04_01_import.png["JBDS import 2/2",600]
+image::images/04_01_import.png["JBDS import (2/2)",600]
 
 
 Step 2 - Review the application::

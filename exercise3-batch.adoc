@@ -65,7 +65,7 @@ Import the maven project you just built. (File -> Import -> Existing Projects in
 +
 image::images/03_01_import.png["JBDS import (1/2)",600]
 +
-image::images/03_02_import.png["JBDS import 2/2",600]
+image::images/03_02_import.png["JBDS import (2/2)",600]
 
 
 Step 3 - Have a look at the defined Job::
