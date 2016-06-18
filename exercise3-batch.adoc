@@ -157,6 +157,7 @@ The runtime metrics related to the batch subsystem can also be viewed in the the
 +
 image::images/03_06_runtime.png["JBoss EAP 7 - Batch subsystem runtime metrics",600]
 
+
 Step 6 - Update to a JDBC job-repository::
 +
 The current used job repository is purely in memory. Let's update it to a JDBC one.
@@ -168,11 +169,12 @@ First add the following line at the end of the the $JBOSS_HOME/bin/standalone.co
 JAVA_OPTS="$JAVA_OPTS -Dcom.arjuna.ats.arjuna.allowMultipleLastResources=true"
 ----
 +
-Then execute update the JBoss EAP 7 configuration using CLI commans as follows:
+Then execute update the JBoss EAP 7 configuration using CLI commands as follows:
 +
 [source,bash]
 ----
 $ cd $JBOSS_HOME/bin
+# Connect to Red Hat JBoss EAP 7 using the Command Line Interface (CLI)
 $ ./jboss-cli.sh --connect
 # Creates a new data-source "BatchDS"
 [standalone@localhost:9990 /] /subsystem=datasources/data-source=BatchDS/:add(jndi-name="java:jboss/datasources/BatchDS",driver-name="h2",connection-url="jdbc:h2:mem:batch;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE",password="sa",user-name="sa",use-java-context=true)
