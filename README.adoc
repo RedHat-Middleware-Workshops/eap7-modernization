@@ -32,7 +32,7 @@ Here is a short list for the available exercises:
 * https://github.com/tqvarnst/jboss-eap7-summit-lab/blob/master/exercise2-frontend.adoc[Exercise 2 - Java EE 7 Front-end technologies]
 * https://github.com/tqvarnst/jboss-eap7-summit-lab/blob/master/exercise3-batch.adoc[Exercise 3 - Batch Applications]
 * https://github.com/tqvarnst/jboss-eap7-summit-lab/blob/master/exercise4-messaging.adoc[Exercise 4 - Messaging with ActiveMQ Artemis]
-* https://github.com/tqvarnst/jboss-eap7-summit-lab/blob/master/exercise5-concurrency.adoc[Exercise 5 - Concurrency Utilities]
+* https://github.com/tqvarnst/jboss-eap7-summit-lab/blob/master/exercise5-concurrency.adoc[Exercise 5 - Java EE Concurrency Utilities]
 * https://github.com/tqvarnst/jboss-eap7-summit-lab/blob/master/exercise6-loadbalancing.adoc[Exercise 6 - Load-balancing]
 * https://github.com/tqvarnst/jboss-eap7-summit-lab/blob/master/exercise7-clustering.adoc[Exercise 7 - Clustering]
 

@@ -1,4 +1,4 @@
-== [Exercise 5] Concurrency Utilities
+== [Exercise 5] Java EE Concurrency Utilities
 
 === What you will learn
 
@@ -6,17 +6,17 @@ Doing this exercise, participants will learn:
 
 * what are the "Concurrency Utilities for Java EE 1.0"
 * how to use the the Java Concurrency API
-* how to configure the concurrency services
+* how to configure the concurrency services on JBoss EAP 7
 
 
 === Background information
 
-Concurrency is the ability of a system to execute several tasks in parallel, during overlapping time periods, instead of sequentially. The "Concurrency Utilities for Java EE 1.0" (https://jcp.org/ja/jsr/detail?id=342[JSR342]) specification was developed to fulfill the following goals:
+*Concurrency* is the ability of a system to execute several tasks in parallel, during overlapping time periods, instead of sequentially. The "Concurrency Utilities for Java EE 1.0" (https://jcp.org/ja/jsr/detail?id=342[JSR342]) specification was developed to fulfill the following goals:
 
 * provide a simple/flexible/usable API for implementing simple and advanced concurrency patterns
 * facilitate the migration from Java SE and EE
 
-It has been built on top of the "Concurrency Utilities API" for Java SE (https://jcp.org/ja/jsr/detail?id=166[JSR166]). The specification has been made "Java EE aware" with capabilities like container context propagation, transaction management and task events notification. Thanks to this API, Java EE 7 platforms are aware of the resources used by threads and capable of managing their pools and life-cycles properly.
+It has been built on top of the "Concurrency Utilities API" for Java SE (https://jcp.org/ja/jsr/detail?id=166[JSR166]). The Java SE specification has been made Java EE aware by getting capabilities like container context propagation, transaction management and task events notification. Thanks to this API, Java EE 7 platforms are aware of the resources used by threads and capable of managing their pools and life-cycles properly.
 
 The API provides thread pools and executor with 4 managed object types in the  `javax.enterprise.concurrent` package:
 
@@ -96,9 +96,6 @@ In addition to these main interfaces, the specification provides many other inte
 === Lab
 
 This lab builds on the "managed-executor-service" quickstart of JBoss EAP 7. It demonstrates how Java EE applications can submit tasks for asynchronous execution.
-
-The Managed Executor Service (`javax.enterprise.concurrent.ManagedExecutorService`) allows Java EE applications to submit tasks for asynchronous execution. It is an extension of Java SE's Executor Service (java.util.concurrent.ExecutorService) adapted to the Java EE platform requirements.
-
 
 Step 1 - Build the "managed-executor-service" quickstart project::
 +
