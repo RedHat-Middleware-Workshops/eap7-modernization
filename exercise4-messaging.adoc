@@ -44,12 +44,7 @@ Note: STOMP, MQTT, AMQP are currently not supported in EAP 7.0.
 
 The following picture show the High-level architecture of ArtemisMQ:
 
-image::images/03_01_archi.png["Architecture of ArtemisMQ",600]
-
->>> https://activemq.apache.org/artemis/docs/1.3.0/images/architecture1.jpg
-
-This lab builds on the "batch-processing" quickstart of JBoss EAP 7. It simulates a file importation using batch jobs.
-
+image::images/04_01_archi.jpg["Architecture of ArtemisMQ",600]
 
 
 === Lab
@@ -177,6 +172,7 @@ As you see, the queue and topic here are bound to the deployment and accessible 
 Step 6 - Create a queue consumable by external clients::
 +
 To test the use of external JMS clients with Red Hat JBoss Enterprise Application Platform, we will use the "helloworld-jms". It includes:
++
 * a message producer that sends messages to a JMS destination deployed to a JBoss EAP server
 * a message consumer that receives message from a JMS destination deployed to a JBoss EAP server.
 +
