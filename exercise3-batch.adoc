@@ -225,6 +225,10 @@ To see even more details about the executed jobs, you can execute the following 
 +
 
 
+=== Summary
+
+In this lab, you learned what is the Java Batch API and how it is implemented in Red Hat JBoss EAP 7 (Batch-JBeret subsystem). Then you built, deployed, executed and monitored a batch job and configured a JDBC batch job repository.
+
 === Links
 
 To learn more about the Java Batch API and JSR-352 specification, please have a look at the following documents:

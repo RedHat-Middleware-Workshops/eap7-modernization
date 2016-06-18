@@ -296,8 +296,7 @@ INFO: Received message with content Hello, World!
 
 === Summary
 
-Brief summary around what we learned.
-
+In this lab, you learned what is new regarding messaging in Red Hat JBoss EAP 7 (JMS 2.0 and ActiveMQ Artemis). Then, you built and deployed an application consuming in-vm queues and topics. At the end, you configured a queue and consumed it via an external client.
 
 === Links
 
