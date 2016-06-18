@@ -3,12 +3,12 @@
 
 === What you will learn
 
-
 Doing this exercise, participants will learn:
 
 * what are JMS 2.0 and ActiveMQ Artemis
 * how to build and deploy a JMS application
 * how to configure an outbound queue on EAP 7
+
 
 === Background information
 
