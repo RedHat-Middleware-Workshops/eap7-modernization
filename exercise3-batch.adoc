@@ -108,7 +108,7 @@ $ mvn clean install wildfly:deploy
 +
 Right click on "/jboss-batch-processing/target/jboss-batch-processing.war" and select "Mark as Deployable"
 +
-image::images/03_04_deploy.png["Deploy in JBDS",600]
+image::images/03_04_deploy.png["Deploy in JBDS",400]
 
 Step 4 - Access the application::
 +
@@ -131,7 +131,7 @@ Open the http://localhost:9990/console/[management console] of your running JBos
 +
 Go to "Configuration -> Subsystems -> Batch" and click on "view" to display the current settings.
 +
-image::images/03_05_configuration.png["JBoss EAP 7 - Batch subsystem configuration",600]
+image::images/03_05_configuration.png["JBoss EAP 7 - Batch subsystem configuration",500]
 
 +
 Those settings mirror exactly the configuration of the the standalone.xml:
