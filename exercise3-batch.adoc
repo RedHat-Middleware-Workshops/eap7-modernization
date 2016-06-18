@@ -63,9 +63,9 @@ Open JBoss Developer Studio (desktop shortcut).
 +
 Import the maven project you just built. (File -> Import -> Existing Projects into Workspace -> Next -> Paste "root directory") -> Finish)
 
-image::images/03_01_import.png[JBDS import 1/2]
+image::images/03_01_import.png["JBDS import",600]
 
-image::images/03_02_import.png[JBDS import 2/2]
+image::images/03_02_import.png["JBDS import 1/2",600]
 
 
 Step 3 - Have a look at the defined Job::
@@ -77,7 +77,8 @@ Open the xml file defining the job and have a look at its "Design", "Diagram" an
 /jboss-batch-processing/src/main/resources/META-INF/batch-jobs/import-file.xml
 ----
 +
-image::images/03_03_steps.png[Batch jobs in JBDS]
+.Batch jobs in JBDS
+image::images/03_03_steps.png["Batch jobs in JBDS",600]
 +
 The Job contains two steps ...
 +
@@ -108,8 +109,8 @@ $ mvn clean install wildfly:deploy
 +
 Right click on "/jboss-batch-processing/target/jboss-batch-processing.war" and select "Mark as Deployable"
 +
-image::images/03_04_deploy.png[Deploy in JBDS]
-
+.Deploy in JBDS
+image::images/03_04_deploy.png["Deploy in JBDS",600]
 
 Step 4 - Access the application::
 +
@@ -132,7 +133,9 @@ Open the http://localhost:9990/console/[management console] of your running JBos
 +
 Go to "Configuration -> Subsystems -> Batch" and click on "view" to display the current settings.
 +
-image::images/03_05_configuration.png[JBoss EAP 7 - Batch subsystem configuration]
+.JBoss EAP 7 - Batch subsystem configuration
+image::images/03_05_configuration.png["JBoss EAP 7 - Batch subsystem configuration",600]
+
 +
 Those settings mirror exactly the configuration of the the standalone.xml:
 +
@@ -155,8 +158,8 @@ You will find more information on its configuration in "$JBOSS_HOME/docs/schema/
 +
 The runtime metrics related to the batch subsystem can also be viewed in the the http://localhost:9990/console/[management console] under Runtime -> Standalone Server -> Subsystems -> Batch -> View.
 +
-image::images/03_06_runtime.png[JBoss EAP 7 - Batch subsystem runtime metrics]
-
+.JBoss EAP 7 - Batch subsystem runtime metrics
+image::images/03_06_runtime.png["JBoss EAP 7 - Batch subsystem runtime metrics",600]
 
 Step 6 - Update to a JDBC job-repository::
 +
@@ -196,7 +199,9 @@ Deploy the "h2console.war" application available in "projects/03_batch/h2-consol
 +
 Access the deployed h2console: http://localhost:8080/h2console.
 +
-image::images/03_07_h2.png[h2console login]
+.h2console login
+image::images/03_07_h2.png["h2console login",600]
+
 +
 Enter the connection parameter for the created Batch data-source:
 +
