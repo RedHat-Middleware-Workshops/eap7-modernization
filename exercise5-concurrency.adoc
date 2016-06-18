@@ -218,11 +218,11 @@ image::images/05_02_jconsole.png["jconsole open",400]
 +
 A pop-up asking you if an insecure connection should be used is then displayed. Click on "Insecure connection".
 +
-image::images/05_03_jconsole_insecure.png["jconsole open",300]
+image::images/05_03_jconsole_insecure.png["jconsole open",400]
 +
 Then you will see the threads used and consumed by the JBoss EAP 7:
 +
-image::images/05_04_jconsole_threads.png["jconsole threads",500]
+image::images/05_04_jconsole_threads.png["jconsole threads",600]
 
 
 Step 8 - Increase the load::
@@ -266,7 +266,7 @@ After selecting the "Services" tab, you are able to view and modify the configur
 +
 image::images/05_06_eap_conf.png["EAP configuration",500]
 +
-Another option to view and modify the configuration is to edit the standalone.xml file (while the server is stopped) or execute CLI commands. 
+Another option to view and modify the configuration is to edit the standalone.xml file (while the server is stopped) or execute CLI commands.
 
 
 === Summary
