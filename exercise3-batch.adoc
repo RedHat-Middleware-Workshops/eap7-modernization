@@ -79,7 +79,7 @@ Open the xml file defining the job and have a look at its "Design", "Diagram" an
 +
 image::images/03_03_steps.png["Batch jobs in JBDS",600]
 +
-The Job contains two steps ...
+The job contains two steps ...
 +
 1. "import-file-chunk" (chunk oriented). The RecordsReader is responsible for parsing the file and create an instance of Contact. The ContactsFormatter applies the proper case to the Contact name and it also applies a mask to the phone number. Finally, ContactsPersister will send the Contact instance to the Database.
 2. Log the number of records imported
@@ -90,7 +90,7 @@ Have a look at the classes implementing the Chunks, Batchlet and JobListener.
 +
 You will find more information about the quickstart in the "README.md" or "README.html" files.
 
-Step 3 - Start JBoss EAP 7 and deploy the application::
+Step 4 - Start JBoss EAP 7 and deploy the application::
 +
 Make sure you have started the JBoss EAP 7 server as described previously.
 +
@@ -110,7 +110,7 @@ Right click on "/jboss-batch-processing/target/jboss-batch-processing.war" and s
 +
 image::images/03_04_deploy.png["Deploy in JBDS",400]
 
-Step 4 - Access the application::
+Step 5 - Access the application::
 +
 Access the running application in a browser at the following URL: http://localhost:8080/jboss-batch-processing/
 +
@@ -125,7 +125,7 @@ Click on the "Generate a new file and start import job" button. Then investigate
 Check the "Generate a duplicate record" check-box and click again on the "Generate a new file and start import job" button. Analyze the logs the results.
 
 
-Step 5 - Review the configuration of the JBoss EAP 7 subsystem::
+Step 6 - Review the configuration of the JBoss EAP 7 subsystem::
 +
 Open the http://localhost:9990/console/[management console] of your running JBoss EAP 7 instance. Enter the previously defined management username and password.
 +
@@ -158,7 +158,7 @@ The runtime metrics related to the batch subsystem can also be viewed in the the
 image::images/03_06_runtime.png["JBoss EAP 7 - Batch subsystem runtime metrics",600]
 
 
-Step 6 - Update to a JDBC job-repository::
+Step 7 - Update to a JDBC job-repository::
 +
 The current used job repository is purely in memory. Let's update it to a JDBC one.
 +
@@ -189,9 +189,9 @@ $ ./jboss-cli.sh --connect
 Then have a look at the JBoss EAP 7 http://localhost:9990/console/[management console] as described in the previous step to see the changes done.
 
 
-Step 7 - View the content of the job-repository::
+Step 8 - View the content of the job-repository::
 +
-Execute again a couple of batches on the deployed application (http://localhost:8080/jboss-batch-processing/), as described in step 4.
+Execute again a couple of batches on the deployed application (http://localhost:8080/jboss-batch-processing/), as described in step 5.
 +
 Deploy the "h2console.war" application available in "projects/03_batch/h2-console" to your running JBoss EAP 7.
 +
@@ -214,7 +214,7 @@ Enter the connection parameter for the created Batch data-source:
 Then, explore the content of the database (tables JOB_EXECUTION, JOB_INSTANCE, PARTITION_EXECUTION and STEP_EXECUTION). Re-execute the deployed batch application as described in step 4 and see its impact on the content of the job database.
 
 
-Step 8 - Display all job details over the CLI::
+Step 9 - Display all job details over the CLI::
 +
 To see even more details about the executed jobs, you can execute the following command over the CLI:
 +
