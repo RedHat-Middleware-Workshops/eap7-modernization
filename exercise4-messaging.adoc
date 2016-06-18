@@ -1,4 +1,4 @@
-== [Exercise 4] Messaging
+== [Exercise 4] Messaging with ActiveMQ Artemis
 
 
 === What you will learn
@@ -51,8 +51,8 @@ image::images/04_01_archi.jpg["Architecture of ArtemisMQ",600]
 
 This lab builds on the "helloword-mdb" and "helloword-jms" quickstarts of JBoss EAP 7.
 
-* "helloword-mdb" demonstrates the use of JMS, in-vm connection factories, queues and topics.
-* "helloword-jms"
+* "helloword-mdb" demonstrates the use of JMS, queues, topics and in-vm connection factories.
+* "helloword-jms" will be used to produce and send messages using an external client
 
 
 Step 1 - Build and import the "helloworld-mdb" project in JBDS::
@@ -75,7 +75,7 @@ Import the maven project you just built. (File -> Import -> Existing Projects in
 +
 image::images/03_01_import.png["JBDS import (1/2)",600]
 +
-image::images/03_02_import.png["JBDS import 2/2",600]
+image::images/04_01_import.png["JBDS import 2/2",600]
 
 
 Step 2 - Review the application::
@@ -87,7 +87,7 @@ The imported project creates two JMS resources:
 +
 Have a look at their consumption by Message Driven Beans ("HelloWorldQueueMDB" and "HelloWorldTopicMDB" classes) and at their definition ("HelloWorldMDBServletClient" class).
 +
-image::images/04_02_jms_def.png["JMS definition",400]
+image::images/04_02_jms_def.png["JMS definition",500]
 +
 On Red Hat JBoss EAP 6, the definition of such queues and topics was done typically in a "hornetq-jms.xml" as follows:
 [source,xml]
@@ -127,7 +127,7 @@ image::images/04_03_server_overview.png["JBDS server overview",400]
 +
 image::images/04_04_server_runtime.png["JBDS server runtime",400]
 +
-Then start the JBoss EAP 7 instance.
+Then start your JBoss EAP 7 server.
 
 
 Step 4 - Deploy the application::
@@ -136,10 +136,11 @@ You have two options for deploying the "jboss-helloworld-mdb.war" binary:
 +
 * Option 1: maven
 +
-Type this command to build and deploy the application:
-+
 [source,bash]
 ----
+# Open a command prompt and navigate to the root of the helloworld-mdb directory:
+$ cd projects/04_messaging/helloworld-mdb
+# Compile and deploy the application
 $ mvn clean install wildfly:deploy
 ----
 * Option 2: JBDS
@@ -149,11 +150,12 @@ Right click on "/helloworld-mdb/target/jboss-helloworld-mdb.war" and select "Mar
 
 Step 5 - Access the application::
 +
-The application should be be running at the following URL: http://localhost:8080/jboss-helloworld-mdb/ and will send some messages to the queue.
+The application should then be available and running at the following URLs:
 +
-To send messages to the topic, use the following URL: http://localhost:8080/jboss-helloworld-mdb/HelloWorldMDBServletClient?topic
+* Access http://localhost:8080/jboss-helloworld-mdb/ to send some messages to the queue.
+* Access http://localhost:8080/jboss-helloworld-mdb/HelloWorldMDBServletClient?topic to send some messages to the topic.
 +
-Then have a look at the console output of the application server.
+Then you should investigate the server console output to see that the JMS messages have been well sent and received.
 
 
 Step 5 - View the runtime information to the created queues::
@@ -164,7 +166,7 @@ Open the http://localhost:9990/console/[management console] of your running JBos
 * Browse the displayed "jboss-helloworld-mdb.war" deployment to view the statistic and runtime information related to the defined queue and topic:
 jboss-helloworld-mdb.war -> subsystem -> messaging-activemq -> server -> default -> jms-queue -> HelloWorldMDBQueue
 +
-image::images/04_05_deployment.png["Deployment - Subsystem configuration",400]
+image::images/04_05_deployment.png["Deployment - Subsystem configuration",600]
 +
 As you see, the queue and topic here are bound to the deployment and accessible only through an in-vm connection. The JMS endpoints are not usable for external clients. During the next two steps, we will configure and test a queue consumable by external clients.
 
@@ -191,11 +193,11 @@ $ ./jboss-cli.sh --connect
 +
 Open then the JBoss EAP 7 http://localhost:9990/console/[management console] under "Configuration -> Subsystems -> Messaging - ActiveMQ -> default" and click on "Queues/Topics".
 +
-image::images/04_06_queue_conf.png["Queue configuration",400]
+image::images/04_06_queue_conf.png["Queue configuration",600]
 +
 Then you should see the created queues as follows:
 +
-image::images/04_07_queue.png["Queue",400]
+image::images/04_07_queue.png["Queue",600]
 
 
 Step 7 - Build and import the "helloworld-jms" project in JBDS::
@@ -253,7 +255,7 @@ Caused by: ActiveMQSecurityException[errorType=SECURITY_EXCEPTION message=AMQ119
 
 Step 8 - Add an Application User::
 +
-The Exception we have seen is due to the fact that the "helloword-jms" application uses secured management interfaces and requires that you create the following application user to access the running application.
+The exception we have seen is due to the fact that the "helloword-jms" application uses secured management interfaces and requires that you create the following application user to access the running application.
 +
 [cols="1,1,1,1", options="header"]
 |===
@@ -262,6 +264,7 @@ The Exception we have seen is due to the fact that the "helloword-jms" applicati
 |===
 +
 To add the application user, open a command prompt and type the following command:
++
 [source,bash]
 ----
 $ cd $JBOSS_HOME/bin
