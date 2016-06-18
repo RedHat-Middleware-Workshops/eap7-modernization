@@ -92,7 +92,7 @@ You will find more information about the quickstart in the "README.md" or "READM
 
 Step 4 - Start JBoss EAP 7 and deploy the application::
 +
-Make sure you have started the JBoss EAP 7 server as described previously.
+Start your JBoss EAP 7 server as described in the first lab.
 +
 You have two options for deploying the "jboss-batch-processing.war" binary:
 +

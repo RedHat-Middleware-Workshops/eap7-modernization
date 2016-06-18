@@ -127,7 +127,7 @@ image::images/04_03_server_overview.png["JBDS server overview",400]
 +
 image::images/04_04_server_runtime.png["JBDS server runtime",400]
 +
-Then start your JBoss EAP 7 server.
+Then start your JBoss EAP 7 server as described in the first lab.
 
 
 Step 4 - Deploy the application::
