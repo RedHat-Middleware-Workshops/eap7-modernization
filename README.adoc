@@ -31,7 +31,7 @@ Here is a short list for the available exercises:
 * Exercise 1 - Environment setup
 * Exercise 2 - Java EE 7 Front-end technologies
 * https://github.com/tqvarnst/jboss-eap7-summit-lab/blob/master/exercise3-batch.adoc[Exercise 3 - Batch Applications]
-* Exercise 4 - Messaging with Artemis
+* https://github.com/tqvarnst/jboss-eap7-summit-lab/blob/master/exercise4-messaging.adoc[Exercise 4 - Messaging with Artemis]
 * Exercise 5 - Concurrency
 * Exercise 6 - Load-balancing
 * Exercise 7 - Clustering
