@@ -26,6 +26,7 @@ if (outcome==failed) of /host=master/server-config=load-balancer:read-resource
     /host=master/server-config=load-balancer:add(group=load-balancer)
 
     deploy {{ ansible_user_dir }}/clustering-demo.war --server-groups=backend-servers
+    deploy {{ ansible_user_dir }}/loadbalancing-demo.war --server-groups=backend-servers
 
     /host=master/server-config=backend1:write-attribute(name=auto-start,value=true)
     /host=master/server-config=backend2:write-attribute(name=auto-start,value=true)

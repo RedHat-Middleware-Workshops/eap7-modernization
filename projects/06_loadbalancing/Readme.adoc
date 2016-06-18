@@ -1,0 +1,17 @@
+Execution:
+
+$ ansible-playbook playbook.yml
+$ cd ~/jboss-eap-7.0/
+$ export JBOSS_HOME=$(pwd)
+$ ./domain.sh
+
+
+
+https://localhost:8080/loadbalancing-demo  -> displays the number of the backend node serving the request
+
+https://localhost:8080/clustering-demo -> counts the number of page-calls (counter incremented)
+
+
+Nice test:
+
+watch -n 0.1 "curl -s http://localhost:8080/loadbalancing-demo/?[1-1000]"
