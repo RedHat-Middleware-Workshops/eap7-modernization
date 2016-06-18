@@ -269,7 +269,7 @@ To add the application user, open a command prompt and type the following comman
 ----
 $ cd $JBOSS_HOME/bin
 # Connect to Red Hat JBoss EAP 7 using the Command Line Interface (CLI)
-$ add-user.sh -a -u 'quickstartUser' -p 'quickstartPwd1!' -g 'guest'
+$ ./add-user.sh -a -u 'quickstartUser' -p 'quickstartPwd1!' -g 'guest'
 ----
 +
 Now try again to run the Step 7. You should get an output like the following one:
