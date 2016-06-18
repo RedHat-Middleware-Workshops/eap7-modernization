@@ -3,10 +3,10 @@ Thomas Qvarnstrom <tqvarnst@redhat.com>; Marc Zottner <mzottner@redhat.com>
 
 :sectnums!:
 :toc: left
-:revnumber: 0.2
-:revdate: 2016-06-17
+:revnumber: 0.3
+:revdate: 2016-06-18
 
-This repository is the used to develop the 2016 Red Hat Summit lab for JBoss EAP 7. The main authors of _{doctitle}_ is *{author}*, Red Hat and *{author_2}*, Red Hat and the current version ({revnumber}) was updated on {revdate}.
+This repository is the used to develop the 2016 Red Hat Summit lab for JBoss EAP 7. The main authors of _{doctitle}_ is *{author}*, Red Hat and *{author_2}*, Red Hat and the current version ({revnumber}) was last updated on {revdate}.
 
 == Lab Overview
 
@@ -28,13 +28,13 @@ The lab consists of several exercises walking the participant through basic and 
 
 Here is a short list for the available exercises:
 
-* Exercise 1 - Environment setup
-* Exercise 2 - Java EE 7 Front-end technologies
+* https://github.com/tqvarnst/jboss-eap7-summit-lab/blob/master/exercise1-setup.adoc[Exercise 1 - Environment setup]
+* https://github.com/tqvarnst/jboss-eap7-summit-lab/blob/master/exercise2-frontend.adoc[Exercise 2 - Java EE 7 Front-end technologies]
 * https://github.com/tqvarnst/jboss-eap7-summit-lab/blob/master/exercise3-batch.adoc[Exercise 3 - Batch Applications]
 * https://github.com/tqvarnst/jboss-eap7-summit-lab/blob/master/exercise4-messaging.adoc[Exercise 4 - Messaging with ActiveMQ Artemis]
 * https://github.com/tqvarnst/jboss-eap7-summit-lab/blob/master/exercise5-concurrency.adoc[Exercise 5 - Concurrency Utilities]
-* Exercise 6 - Load-balancing
-* Exercise 7 - Clustering
+* https://github.com/tqvarnst/jboss-eap7-summit-lab/blob/master/exercise6-loadbalancing.adoc[Exercise 6 - Load-balancing]
+* https://github.com/tqvarnst/jboss-eap7-summit-lab/blob/master/exercise7-clustering.adoc[Exercise 7 - Clustering]
 
 
 include::exercise1-setup.adoc[]
