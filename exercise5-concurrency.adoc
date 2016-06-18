@@ -124,13 +124,9 @@ image::images/03_01_import.png["JBDS import (1/2)",600]
 image::images/05_01_import.png["JBDS import (2/2)",600]
 
 
-Step 3 - Have a look at the source code::
+Step 3 - Have a look at the Java code::
 +
-The imported application contains a JAX-RS resource (`ProductResourceRESTService` class) providing access to several operations that are executed asynchronously:
-+
-* `PersitTask`
-* `LongRunningTask`
-* `DeleteTask`
+The imported application contains a JAX-RS resource (`ProductResourceRESTService` class) providing access to several operations that are executed asynchronously: `PersitTask`, `LongRunningTask` and `DeleteTask`.
 +
 Take some time to understand how these classes inter-relate and how the `ManagedExecutorService` is used.
 +
@@ -139,7 +135,7 @@ A test class (`ProductsRestClientTest`) has been defined to invoke the exposed R
 
 Step 4 - Start JBoss EAP 7 and deploy the application::
 +
-Make sure you have started the JBoss EAP 7 server as described previously.
+Start your JBoss EAP 7 server as described in the first lab.
 +
 You have two options for deploying the "jboss-managed-executor-service.war" binary:
 +
@@ -160,7 +156,7 @@ Step 5 - Run the tests::
 +
 This quickstart provides tests that shows how the asynchronous tasks are executed. By default, these tests are configured to be skipped as the tests requires that the application to be deployed first.
 +
-You have two choices for running the test:
+You have two choices for executing the test:
 +
 * Option 1: use maven
 +
@@ -171,9 +167,7 @@ $ mvn clean test -Prest-test
 +
 * Option 2: use JBDS
 +
-To be able to run the tests from JBDS, first set the active Maven profile in project properties to be either 'rest-client'.
-+
-To run the tests, right click on the project or individual classes and select Run As -> JUnit Test in the context menu.
+Right click on the project or individual classes and select Run As -> JUnit Test in the context menu.
 
 
 Step 6 - Investigate the results::
@@ -228,7 +222,7 @@ image::images/05_03_jconsole_insecure.png["jconsole open",300]
 +
 Then you will see the threads used and consumed by the JBoss EAP 7:
 +
-image::images/05_03_jconsole_threads.png["jconsole threads",500]
+image::images/05_04_jconsole_threads.png["jconsole threads",500]
 
 
 Step 8 - Increase the load::
@@ -262,9 +256,7 @@ public void parallelTest() throws InterruptedException {
 
 Step 9 - Review the EE concurrency configuration::
 +
-The "Thread" subsystem of JBoss EAP 6 has been removed. Every subsystem needing threads is defining its own thread pool.
-+
-As described at the beginning of this lab, the Java EE concurrency utilities is configured within the "EE" subsystem of JBoss EAP 7.
+The "Thread" subsystem of JBoss EAP 6 has been removed. All JBoss EAP 7 subsystems needing threads define their own thread pool. The Java EE concurrency utilities is configured within the "EE" subsystem of JBoss EAP 7.
 +
 The configuration can be viewed and modified in the JBoss EAP 7 http://localhost:9990/console/[management console] over Configuration -> Subsystems -> EE, clicking on "View".
 +
@@ -274,7 +266,7 @@ After selecting the "Services" tab, you are able to view and modify the configur
 +
 image::images/05_06_eap_conf.png["EAP configuration",500]
 +
-Another option is to use the CLI to retrieve the
+Another option to view and modify the configuration is to edit the standalone.xml file (while the server is stopped) or execute CLI commands. 
 
 
 === Summary
