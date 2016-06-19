@@ -3,33 +3,61 @@
 
 === What you will learn
 
-Participants will learn how to ...
+Participants will learn:
+1. How to install JBoss EAP 7 in a development environment
+2. How to add an administrative user
+3. Configure a server adapter to the installed JBoss EAP 7 in JBoss Developer Studio
 
 
 === Background information
 
-Some background information on ...
+JBoss Developer Studio is an Eclipse based IDE with plugins to help development. JBoss Developer Studion comes in three different alternatives:
+
+1. *Boundle with JBoss EAP*
++
+A single download and installation that JBoss EAP. This options is best if you are going to develop on the specific version of JBoss EAP that is in the boundle
+2. *Standalone installation*
++
+This is a standalone download that will only install and JBoss Developer Studio. Ev. application container like JBoss EAP has to installed and setup separatly
++
+NOTE: At the time of writing this the latest version of JBoss Developer Studio (e.g 9.1) with JBoss EAP is using JBoss EAP 6.4. We are therefor going to use the Standalone version in this exercise
+
+3. *As a setup of plugins*
++
+For users that already have Eclipse installed another option is to install JBoss Developer Studion plugins into an existing version. This option is great if your organisation have a standarized IDE based on Eclipse.
++
+NOTE: When using this options make sure that use the version of JBoss Developer Studion that is combatible with the version of Eclipse that you are using.
 
 
 === Lab
 
-High-level description of the lab.
+In this lab we will setup and configure the development environment that we are going to use.
 
-Step 1 - Do something::
-Background for step 1.
-+
+Step 1 - Install JBoss EAP 7::
+
+Unzip the downloaded JBoss EAP 7 zip compressed file in your home directory
+
+
 [source,bash]
 ----
-$ ls -elf
+$ cd <1>
+$ unzip ~/software/jboss-eap-7.0.0.zip
 ----
+<1> By executing cd with out any arguments one changes the current directory to the users home directory.
 
-Step 2 - Do something else::
-Background for step 2.
-+
+
+Step 2 - Add administrator to JBoss EAP 7::
+
+Default the JBoss EAP installation is configred to be secure and doesn't allow unauthenticated users to access the administrative console etc.
+
 [source,bash]
 ----
-$ ls -elf
+$ cd ~/jboss-eap-7.0/bin
+$ sh add-user.sh -u admin -p admin-123 -s # <1>
 ----
+<1> This command will silently install an administrative user with username admin and password admin-123. If you ommit the arguments to the add-user.sh it will prompt you for the information needed.
+
+Step 3 - Configure JBoss Develolper Studio::
 
 
 === Summary
