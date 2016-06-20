@@ -111,7 +111,7 @@ image::images/01_15_jboss-eap-stopped.png["JBoss EAP Stopped",600]
 Step 3 - Start JBoss Developer Studio::
 Dubbel click the _JBoss Developer Studio 9.1.0.GA_ icon in the desktop.
 +
-image::images/01_01_JBDS_icon.png["JBDS Icon"]
+image::images/01_01_JBDS_Icon.png["JBDS Icon"]
 +
 NOTE: The lab machine that you are using are already have `$HOME/workspace` configure as the workspace for JBoss Developer Studio. Otherwise you would now be promted to select workspace location.
 
