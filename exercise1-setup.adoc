@@ -29,46 +29,141 @@ For users that already have Eclipse installed another option is to install JBoss
 NOTE: When using this options make sure that use the version of JBoss Developer Studion that is combatible with the version of Eclipse that you are using.
 
 
-=== Lab
+=== Setup the development environment
 
 In this lab we will setup and configure the development environment that we are going to use.
 
 Step 1 - Install JBoss EAP 7::
-
-Unzip the downloaded JBoss EAP 7 zip compressed file in your home directory
-
-
+Unzip the downloaded JBoss EAP 7 zip compressed file in your home directory by opening a Terminal window (there is a shortcut on your desktop)
++
 [source,bash]
 ----
-$ cd <1>
-$ unzip ~/software/jboss-eap-7.0.0.zip
+cd
+unzip ~/software/jboss-eap-7.0.0.zip
 ----
-<1> By executing cd with out any arguments one changes the current directory to the users home directory.
++
+NOTE: By executing cd with out any arguments one changes the current directory to the users home directory.
 
+Step 1.1 - Add administrator to JBoss EAP 7:::
 
-Step 2 - Add administrator to JBoss EAP 7::
-
-Default the JBoss EAP installation is configred to be secure and doesn't allow unauthenticated users to access the administrative console etc.
-
+Default the JBoss EAP installation is configured to be secure and doesn't allow unauthenticated users to access the administrative console etc.
++
 [source,bash]
 ----
-$ cd ~/jboss-eap-7.0/bin
-$ sh add-user.sh -u admin -p admin-123 -s # <1>
+cd ~/jboss-eap-7.0/bin
+sh add-user.sh -u admin -p admin-123 -s
 ----
-<1> This command will silently install an administrative user with username admin and password admin-123. If you ommit the arguments to the add-user.sh it will prompt you for the information needed.
++
+NOTE: This command will silently install an administrative user with username admin and password admin-123. If you ommit the arguments to the add-user.sh it will prompt you for the information needed.
 
-Step 3 - Configure JBoss Develolper Studio::
+'''
+
+Step 2 - Verify the installation::
+To verify we are going to start the server and loing to the Administration console. Follow the steps below to verify the installation, but please
+
+Step 2.1 - Start the server:::
+In the terminal window run the following commands:
++
+[source,bash]
+----
+cd ~/jboss-eap-7.0/bin
+sh standalone.sh
+----
+
+Step 2.2 - Open firefox:::
+Dubbel click the _Firefox_ icon in the desktop.
++
+image::images/01_10_firefox_icon.png["Firefox Icon"]
++
+
+Step 2.3 - Open go to the welcome page:::
+Type http://localhost:8080 in the address bar and click on the Administration Console Link
++
+image::images/01_12_firefox_welcomepage.png["Welcome Page",600]
++
+
+Step 2.4 - Login as administrator:::
+Use the credentials from Step 1.1 to login to the administrative console
++
+image::images/01_13_firefox_login.png["Login",400]
++
+
+Step 2.5 - Verification:::
+Verify that the Administration console opens successfully
++
+image::images/01_13_firefox_admin_console.png["Administration console",600]
++
+Also verify that there are no `ERROR` messages in the Terminal window.
++
+image::images/01_13_terminal.png["Administration console",600]
++
+NOTE: If you look carefully, you can see a `WARN` message saying `Node identifier property is set to the default value. Please make sure it is unique`. Node identifiers are used, when building clusters, but setting up a local development environment we can safely ignore this warning.
+
+Step 2.6 - Shutdown JBoss EAP:::
+Now when we have verified that everything works ok we can stop JBoss EAP 7.
++
+To stop JBoss EAP click on the terminal window and pres `CTRL-C`
++
+image::images/01_15_jboss-eap-stopped.png["JBoss EAP Stopped",600]
+
+'''
+
+Step 3 - Start JBoss Developer Studio::
+Dubbel click the _JBoss Developer Studio 9.1.0.GA_ icon in the desktop.
++
+image::images/01_01_JBDS_icon.png["JBDS Icon"]
++
+NOTE: The lab machine that you are using are already have `$HOME/workspace` configure as the workspace for JBoss Developer Studio. Otherwise you would now be promted to select workspace location.
+
+Step 3.1 - Click on link to add server:::
++
+image::images/01_02_create_new_server.png["JBDS-1",600]
+
+Step 3.2 - Select server type:::
+Make sure that you select `Red Hat JBoss Enterprise Application Platform 7.0` and click `Next`
++
+image::images/01_03_create_new_server.png["JBDS-2",600]
++
+NOTE: If you have problems seeing the different server types make the window bigger by dragging in the bottom left corner.
+
+Step 3.3 - Create a new Server adapter:::
+Make sure that the default settings match the image below and click `Next`.
++
+image::images/01_04_create_new_server.png["JBDS-3",400]
+
+Step 3.4 - Select JBoss Runtime:::
+Click on `Browse`.
++
+image::images/01_05_create_new_server.png["JBDS-4",600]
+
+Step 3.5 - Point to JBoss EAP 7 installation directory:::
+Click on `Home` in the left navigation and select `jboss-eap-7.0` directory to the right and click on `OK` in the top right corner.
++
+image::images/01_06_create_new_server.png["JBDS-5",600]
+
+Step 3.6 - Finish the Add Server dialog:::
+Click on `Finsih`.
++
+image::images/01_07_create_new_server.png["JBDS-6",600]
+
+Step 3.6 - Verification:::
+A server instance should now be available in the `Server` tab in JBoss Developer Studio.
++
+image::images/01_09_create_new_server.png["JBDS-6",600]
+
+
+
+
 
 
 === Summary
 
-Brief summary around what we learned.
+In this exercise you have learned how to setup a development environment using `JBoss Enterprise Application Platform 7` and `JBoss Developer Studio 9.1`.
 
 
 === Links
 
 For more information, please have a look at the following articles and documents:
 
-* a
-* b
-* c
+* https://access.redhat.com/documentation/en/red-hat-jboss-enterprise-application-platform/7.0/getting-started-guide/getting-started-guide[JBoss EAP 7 docs - Getting Started Guide]
+* https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_Developer_Studio/9.1/html/Install_Red_Hat_JBoss_Developer_Studio/index.html[JBDS 9.1 docs - Install JBoss Developer Studio]
