@@ -80,8 +80,7 @@ public class RESTEndpointMemberRegistrationTest {
                 .addAsResource("META-INF/test-persistence.xml", "META-INF/persistence.xml")
                 .addAsResource("import.sql")
                 .addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml")
-                .addAsWebInfResource("test-ds.xml")
-                .merge(ShrinkWrap.create(ExplodedImporter.class).importDirectory("src/main/webapp").as(GenericArchive.class));
+                .addAsWebInfResource("test-ds.xml");
     }
 
     @Test
