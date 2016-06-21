@@ -31,6 +31,8 @@
          <!-- Properties for Hibernate -->
          <property name="hibernate.hbm2ddl.auto" value="create-drop" />
          <property name="hibernate.show_sql" value="false" />
+         <property name="hibernate.hbm2ddl.import_files" value="import.sql"/>
+         
       </properties>
    </persistence-unit>
 </persistence>
