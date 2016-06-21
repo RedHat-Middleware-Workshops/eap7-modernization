@@ -51,7 +51,7 @@ import org.openqa.selenium.support.FindBy;
  */
 @RunAsClient
 @RunWith(Arquillian.class)
-public class KitchensinkAngularjsTest {
+public class ClientSideMemberRegistrationTest {
 
     /**
      * Locator for registration form page fragment

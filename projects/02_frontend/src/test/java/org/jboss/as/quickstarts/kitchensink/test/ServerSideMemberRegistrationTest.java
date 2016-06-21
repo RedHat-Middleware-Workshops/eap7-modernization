@@ -35,7 +35,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @RunWith(Arquillian.class)
-public class MemberRegistrationTest {
+public class ServerSideMemberRegistrationTest {
     @Deployment
     public static Archive<?> createTestArchive() {
         return ShrinkWrap.create(WebArchive.class, "test.war")
@@ -61,16 +61,4 @@ public class MemberRegistrationTest {
         assertNotNull(newMember.getId());
         log.info(newMember.getName() + " was persisted with id " + newMember.getId());
     }
-    
-    @Test
-    public void testRegisterWithInternationalPhonenumber() throws Exception {
-        Member newMember = new Member();
-        newMember.setName("John Doe");
-        newMember.setEmail("john@mailinator.com");
-        newMember.setPhoneNumber("+2125551234");
-        memberRegistration.register(newMember);
-        assertNotNull(newMember.getId());
-        log.info(newMember.getName() + " was persisted with id " + newMember.getId());
-    }
-
 }

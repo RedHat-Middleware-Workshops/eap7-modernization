@@ -51,7 +51,7 @@ import org.junit.runner.RunWith;
  */
 @RunAsClient
 @RunWith(Arquillian.class)
-public class RESTTest {
+public class RESTEndpointMemberRegistrationTest {
 
     private static final String NEW_MEMBER_NAME = "John Doe";
     private static final String NEW_MEMBER_EMAIL = "john.doe@redhat.com";
@@ -80,7 +80,6 @@ public class RESTTest {
                 .addAsResource("META-INF/test-persistence.xml", "META-INF/persistence.xml")
                 .addAsResource("import.sql")
                 .addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml")
-                // Deploy our test datasource
                 .addAsWebInfResource("test-ds.xml")
                 .merge(ShrinkWrap.create(ExplodedImporter.class).importDirectory("src/main/webapp").as(GenericArchive.class));
     }

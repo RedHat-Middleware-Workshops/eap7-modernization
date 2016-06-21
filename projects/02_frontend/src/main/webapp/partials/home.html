@@ -45,7 +45,7 @@
             </div>
             <div>
                 <label for="phoneNumber">Phone #:</label>
-                <input type="tel" name="phoneNumber" id="phoneNumber" ng-model="newMember.phoneNumber" ng-pattern="/^[+]?[0-9]{10,12}$/" placeholder="Your Phone #" required/>
+                <input type="tel" name="phoneNumber" id="phoneNumber" ng-model="newMember.phoneNumber" ng-pattern="/^[0-9]{10,12}$/" placeholder="Your Phone #" required/>
                 <span class="error" ng-show="regForm.phoneNumber.$error.required">required</span>
                 <span class="error" ng-show="regForm.phoneNumber.$error.pattern">must be between 10 and 12 digits</span>
                 <span class="error" ng-show="errors.phoneNumber">{{errors.phoneNumber}}</span>
