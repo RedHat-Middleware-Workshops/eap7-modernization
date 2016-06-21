@@ -42,7 +42,6 @@ public class MemberRegistrationTest {
                 .addClasses(Member.class, MemberRegistration.class, Resources.class)
                 .addAsResource("META-INF/test-persistence.xml", "META-INF/persistence.xml")
                 .addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml")
-                // Deploy our test datasource
                 .addAsWebInfResource("test-ds.xml");
     }
 
@@ -58,6 +57,17 @@ public class MemberRegistrationTest {
         newMember.setName("Jane Doe");
         newMember.setEmail("jane@mailinator.com");
         newMember.setPhoneNumber("2125551234");
+        memberRegistration.register(newMember);
+        assertNotNull(newMember.getId());
+        log.info(newMember.getName() + " was persisted with id " + newMember.getId());
+    }
+    
+    @Test
+    public void testRegisterWithInternationalPhonenumber() throws Exception {
+        Member newMember = new Member();
+        newMember.setName("John Doe");
+        newMember.setEmail("john@mailinator.com");
+        newMember.setPhoneNumber("+2125551234");
         memberRegistration.register(newMember);
         assertNotNull(newMember.getId());
         log.info(newMember.getName() + " was persisted with id " + newMember.getId());

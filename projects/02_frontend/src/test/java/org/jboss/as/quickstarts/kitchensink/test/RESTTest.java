@@ -16,6 +16,10 @@
  */
 package org.jboss.as.quickstarts.kitchensink.test;
 
+import static org.junit.Assert.assertEquals;
+
+import java.net.URL;
+
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
@@ -28,16 +32,17 @@ import org.jboss.arquillian.container.test.api.RunAsClient;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.arquillian.junit.InSequence;
 import org.jboss.arquillian.test.api.ArquillianResource;
+import org.jboss.shrinkwrap.api.Archive;
+import org.jboss.shrinkwrap.api.GenericArchive;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.asset.EmptyAsset;
+import org.jboss.shrinkwrap.api.importer.ExplodedImporter;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONStringer;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-
-import java.net.URL;
-
-import static org.junit.Assert.assertEquals;
 
 /**
  * Test for REST API of the application
@@ -68,9 +73,16 @@ public class RESTTest {
      *
      * @return war file which is deployed while testing, the whole application in our case
      */
-    @Deployment(testable = false)
-    public static WebArchive deployment() {
-        return Deployments.kitchensink();
+    @Deployment
+    public static Archive<?> createTestArchive() {
+        return ShrinkWrap.create(WebArchive.class, "test.war")
+        		.addPackages(true, "org.jboss.as.quickstarts.kitchensink")
+                .addAsResource("META-INF/test-persistence.xml", "META-INF/persistence.xml")
+                .addAsResource("import.sql")
+                .addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml")
+                // Deploy our test datasource
+                .addAsWebInfResource("test-ds.xml")
+                .merge(ShrinkWrap.create(ExplodedImporter.class).importDirectory("src/main/webapp").as(GenericArchive.class));
     }
 
     @Test

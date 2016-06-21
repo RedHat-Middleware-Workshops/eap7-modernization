@@ -14,24 +14,32 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.jboss.as.quickstarts.kitchensink.test.page;
+package org.jboss.as.quickstarts.kitchensink.test;
 
-import org.jboss.arquillian.graphene.findby.FindByJQuery;
-import org.jboss.as.quickstarts.kitchensink.test.Member;
-import org.openqa.selenium.WebElement;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.WebArchive;
 
-public class MemberPageFragment {
+import java.io.File;
 
-    @FindByJQuery("td:nth-child(2)")
-    private WebElement name;
+/**
+ * Contains deployment method shared between tests
+ *
+ * @author Oliver Kiss
+ */
+public class Deployments {
 
-    @FindByJQuery("td:nth-child(3)")
-    private WebElement email;
+    /**
+     * Specifies relative path to the war of built application in the main project.
+     */
+    private static final String KITCHENSINK = "target/jboss-kitchensink-angularjs.war";
 
-    @FindByJQuery("td:nth-child(4)")
-    private WebElement phoneNumber;
-
-    public Member getMember() {
-        return new Member(name.getText(), email.getText(), phoneNumber.getText());
+    /**
+     * Creates deployment which is sent to the container upon test's start.
+     *
+     * @return war file which is deployed while testing, the whole application in our case
+     */
+    public static WebArchive kitchensink() {
+        return ShrinkWrap.createFromZipFile(WebArchive.class, new File(KITCHENSINK));
     }
+
 }

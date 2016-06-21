@@ -16,6 +16,12 @@
  */
 package org.jboss.as.quickstarts.kitchensink.test;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+
+import java.net.URL;
+import java.util.concurrent.TimeUnit;
+
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.container.test.api.RunAsClient;
 import org.jboss.arquillian.drone.api.annotation.Drone;
@@ -23,20 +29,20 @@ import org.jboss.arquillian.graphene.findby.FindByJQuery;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.arquillian.junit.InSequence;
 import org.jboss.arquillian.test.api.ArquillianResource;
+import org.jboss.as.quickstarts.kitchensink.model.Member;
 import org.jboss.as.quickstarts.kitchensink.test.page.MembersTablePageFragment;
 import org.jboss.as.quickstarts.kitchensink.test.page.RegistrationFormPageFragment;
+import org.jboss.shrinkwrap.api.Archive;
+import org.jboss.shrinkwrap.api.GenericArchive;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.asset.EmptyAsset;
+import org.jboss.shrinkwrap.api.importer.ExplodedImporter;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
-
-import java.net.URL;
-import java.util.concurrent.TimeUnit;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 
 /**
  * Kitchensink Angular.js quickstart functional test
@@ -76,30 +82,36 @@ public class KitchensinkAngularjsTest {
      *
      * @return war file which is deployed while testing, the whole application in our case
      */
-    @Deployment(testable = false)
-    public static WebArchive deployment() {
-        return Deployments.kitchensink();
+    @Deployment
+    public static Archive<?> createTestArchive() {
+        return ShrinkWrap.create(WebArchive.class, "test.war")
+        		.addPackages(true, "org.jboss.as.quickstarts.kitchensink")
+                .addAsResource("META-INF/test-persistence.xml", "META-INF/persistence.xml")
+                .addAsResource("import.sql")
+                .addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml")
+                .addAsWebInfResource("test-ds.xml")
+                .merge(ShrinkWrap.create(ExplodedImporter.class).importDirectory("src/main/webapp").as(GenericArchive.class));
     }
 
     /**
      * Name of the member to register in the right format.
      */
-    private static final String NAME_FORMAT_OK = "John Doe";
+    private static final String NAME_FORMAT_OK = "Jane Doe";
 
     /**
      * Name of the member to register in the bad format.
      */
-    private static final String NAME_FORMAT_BAD = "John1";
+    private static final String NAME_FORMAT_BAD = "Jane1";
 
     /**
      * Name of the member to register which is too long (1-25)
      */
-    private static final String NAME_FORMAT_TOO_LONG = "John Doe John Doe John Doe";
+    private static final String NAME_FORMAT_TOO_LONG = "Jane Doe Jane Doe Jane Doe";
 
     /**
      * E-mail of the member to register in the right format.
      */
-    private static final String EMAIL_FORMAT_OK = "john@doe.com";
+    private static final String EMAIL_FORMAT_OK = "jane@doe.com";
 
     /**
      * E-mail of the member to register in the bad format.
@@ -208,9 +220,6 @@ public class KitchensinkAngularjsTest {
 
         form.register(newMember, true);
         table.waitForNewMember(newMember);
-
-        assertEquals(2, table.getMemberCount());
-        assertEquals(newMember, table.getLatestMember());
     }
 
 }

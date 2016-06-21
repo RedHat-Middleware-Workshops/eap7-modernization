@@ -59,7 +59,16 @@ public class Member implements Serializable {
     @Column(name = "phone_number")
     private String phoneNumber;
 
-    public Long getId() {
+    public Member(String name, String email, String phoneNumber) {
+		this.name = name;
+		this.email = email;
+		this.phoneNumber = phoneNumber;
+	}
+    
+    public Member() {
+	}
+
+	public Long getId() {
         return id;
     }
 

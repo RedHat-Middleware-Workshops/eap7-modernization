@@ -16,19 +16,19 @@
  */
 package org.jboss.as.quickstarts.kitchensink.test.page;
 
+import static org.jboss.arquillian.graphene.Graphene.waitModel;
+
 import org.jboss.arquillian.drone.api.annotation.Drone;
 import org.jboss.arquillian.graphene.angular.findby.FindByNg;
 import org.jboss.arquillian.graphene.condition.element.WebElementConditionFactory;
 import org.jboss.arquillian.graphene.findby.FindByJQuery;
 import org.jboss.arquillian.graphene.fragment.Root;
 import org.jboss.arquillian.test.api.ArquillianResource;
-import org.jboss.as.quickstarts.kitchensink.test.Member;
+import org.jboss.as.quickstarts.kitchensink.model.Member;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
-import static org.jboss.arquillian.graphene.Graphene.waitModel;
 
 public class RegistrationFormPageFragment {
 
