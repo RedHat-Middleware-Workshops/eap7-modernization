@@ -14,21 +14,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.jboss.as.quickstarts.kitchensink.rest;
+package org.jboss.as.quickstarts.kitchensink.test.page;
 
-import javax.ws.rs.ApplicationPath;
-import javax.ws.rs.core.Application;
+import org.jboss.arquillian.graphene.findby.FindByJQuery;
+import org.jboss.as.quickstarts.kitchensink.test.Member;
+import org.openqa.selenium.WebElement;
 
-/**
- * A class extending {@link Application} and annotated with @ApplicationPath is the Java EE 6
- * "no XML" approach to activating JAX-RS.
- * 
- * <p>
- * Resources are served relative to the servlet path specified in the {@link ApplicationPath}
- * annotation.
- * </p>
- */
-@ApplicationPath("/rest")
-public class JaxRsActivator extends Application {
-   /* class body intentionally left blank */
+public class MemberPageFragment {
+
+    @FindByJQuery("td:nth-child(2)")
+    private WebElement name;
+
+    @FindByJQuery("td:nth-child(3)")
+    private WebElement email;
+
+    @FindByJQuery("td:nth-child(4)")
+    private WebElement phoneNumber;
+
+    public Member getMember() {
+        return new Member(name.getText(), email.getText(), phoneNumber.getText());
+    }
 }

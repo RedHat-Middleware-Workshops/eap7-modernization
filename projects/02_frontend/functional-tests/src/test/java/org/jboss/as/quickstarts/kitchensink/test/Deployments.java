@@ -14,21 +14,32 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.jboss.as.quickstarts.kitchensink.rest;
+package org.jboss.as.quickstarts.kitchensink.test;
 
-import javax.ws.rs.ApplicationPath;
-import javax.ws.rs.core.Application;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.WebArchive;
+
+import java.io.File;
 
 /**
- * A class extending {@link Application} and annotated with @ApplicationPath is the Java EE 6
- * "no XML" approach to activating JAX-RS.
- * 
- * <p>
- * Resources are served relative to the servlet path specified in the {@link ApplicationPath}
- * annotation.
- * </p>
+ * Contains deployment method shared between tests
+ *
+ * @author Oliver Kiss
  */
-@ApplicationPath("/rest")
-public class JaxRsActivator extends Application {
-   /* class body intentionally left blank */
+public class Deployments {
+
+    /**
+     * Specifies relative path to the war of built application in the main project.
+     */
+    private static final String KITCHENSINK = "../target/jboss-kitchensink-angularjs.war";
+
+    /**
+     * Creates deployment which is sent to the container upon test's start.
+     *
+     * @return war file which is deployed while testing, the whole application in our case
+     */
+    public static WebArchive kitchensink() {
+        return ShrinkWrap.createFromZipFile(WebArchive.class, new File(KITCHENSINK));
+    }
+
 }

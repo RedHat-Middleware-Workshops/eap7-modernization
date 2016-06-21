@@ -39,11 +39,11 @@ public class MemberRegistrationTest {
     @Deployment
     public static Archive<?> createTestArchive() {
         return ShrinkWrap.create(WebArchive.class, "test.war")
-            .addClasses(Member.class, MemberRegistration.class, Resources.class)
-            .addAsResource("META-INF/test-persistence.xml", "META-INF/persistence.xml")
-            .addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml")
-            // Deploy our test datasource
-            .addAsWebInfResource("test-ds.xml");
+                .addClasses(Member.class, MemberRegistration.class, Resources.class)
+                .addAsResource("META-INF/test-persistence.xml", "META-INF/persistence.xml")
+                .addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml")
+                // Deploy our test datasource
+                .addAsWebInfResource("test-ds.xml");
     }
 
     @Inject
@@ -61,7 +61,6 @@ public class MemberRegistrationTest {
         memberRegistration.register(newMember);
         assertNotNull(newMember.getId());
         log.info(newMember.getName() + " was persisted with id " + newMember.getId());
-        System.out.println("We're inside the Container!");
     }
 
 }
