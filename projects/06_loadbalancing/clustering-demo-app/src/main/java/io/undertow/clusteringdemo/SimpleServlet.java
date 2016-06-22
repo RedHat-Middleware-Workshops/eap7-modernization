@@ -16,7 +16,7 @@ public class SimpleServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.getWriter().write("Server " + System.getProperty("server.name") + " ");
+        resp.getWriter().write("Server " + System.getProperty("server.name") + System.getProperty("line.separator"));
         if(req.getParameter("stateful") != null) {
             HttpSession session = req.getSession(true);
             Integer count = (Integer) session.getAttribute("count");
