@@ -8,6 +8,14 @@ if (outcome==failed) of /host=master/server-config=load-balancer:read-resource
 
     /profile=ha/subsystem=modcluster/mod-cluster-config=configuration:write-attribute(name=advertise-security-key, value=mypassword)
 
+    # Suppress warnings about Cluster Topology because of a known issue see https://issues.jboss.org/jira/browse/JBEAP-794
+    /profile=ha/subsystem=logging/logger=org.infinispan.topology.ClusterTopologyManagerImpl/:add(category=org.infinispan.topology.ClusterTopologyManagerImpl,level=ERROR)
+
+    # Suppress warnings about environment configuration since we are running in a limited lab environment.
+    /profile=ha/subsystem=logging/logger=org.jgroups.protocols.UDP/:add(category=org.jgroups.protocols.UDP,level=ERROR)
+
+
+
     /server-group=backend-servers:add(profile=ha, socket-binding-group=ha-sockets)
 
     /host=master/server-config=backend1:add(group=backend-servers, socket-binding-port-offset=100)
@@ -30,5 +38,13 @@ if (outcome==failed) of /host=master/server-config=load-balancer:read-resource
     /host=master/server-config=backend1:write-attribute(name=auto-start,value=true)
     /host=master/server-config=backend2:write-attribute(name=auto-start,value=true)
     /host=master/server-config=load-balancer:write-attribute(name=auto-start,value=true)
+
+    ## The following lines sets the node identifier for the servers
+    /host=master/server-config=backend1/system-property=jboss.tx.node.id:add(boot-time=true, value=node01)
+    /host=master/server-config=backend2/system-property=jboss.tx.node.id:add(boot-time=true, value=node02)
+    /host=master/server-config=load-balancer/system-property=jboss.tx.node.id:add(boot-time=true, value=lb-01)
+
+    /profile=ha/subsystem=transactions:write-attribute(name=node-identifier,value="${jboss.tx.node.id}")
+    /profile=default/subsystem=transactions:write-attribute(name=node-identifier,value="${jboss.tx.node.id}")
 
 end-if
