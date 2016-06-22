@@ -6,4 +6,4 @@ jboss_home: "{{ansible_user_dir}}/{{eap_name}}-{{eap_minor_version}}"
 jboss_admin_password: admin-123
 jboss_user: student
 jboss_group: student
-jboss_zip_path: "{{ansible_user_dir}}/Downloads/jboss-eap-7.0.0.zip"
+jboss_zip_path: "{{ansible_user_dir}}/software/jboss-eap-7.0.0.zip"
