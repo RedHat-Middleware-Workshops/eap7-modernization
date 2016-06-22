@@ -1,3 +1,0 @@
----
-- name: Restart JBoss
-  service: name=jboss-eap state=restarted
