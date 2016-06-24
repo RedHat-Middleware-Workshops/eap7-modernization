@@ -4,32 +4,33 @@
 
 Participants will learn how to:
 
-- To deploy and test changes directly from JBoss Developer Studio to JBoss EAP 7
-- Use the LiveReload feature for a very quick turn around
-- Use Arquillian run integration and functional testing directly within the IDE.
+* deploy and test changes directly from JBoss Developer Studio to JBoss EAP 7.
+* use the LiveReload feature for a very quick turn around.
+* use Arquillian.
+* run integration and functional test directly within the IDE.
 
 === Background information
 
-In this exercise we are going to use a testing framework called Arquillian. What makes Arquillian so powerful is that it saves allot of development time having to write mocks to test your code. Also it captures eventual issues between your code and the container much earlier. With Arquillian you can run your test in the application container and therefor don't have to mock things like datasources, REST services, JMS, EJB, CDI, etc.  In this exercise we are going to use Arquillian for CDI, REST and WebBrowser testing, it does however have additional advanced features that are beyond what we will cover here. Please visit http://arquillian.org for more information.
+In this exercise we are going to use a testing framework called Arquillian. What makes Arquillian so powerful is that it saves a lot of development time having to write mocks to test your code. Also it captures eventual issues between your code and the container much earlier. With Arquillian you can run your test in the application container and therefore do not have to mock things like datasources, REST services, JMS, EJB, CDI, etc.  In this exercise we are going to use Arquillian for CDI, REST and WebBrowser testing. It does however have additional advanced features that are beyond what we will cover here. Please visit the http://arquillian.org[Arquillian project page] for more information.
 
-NOTE: Arquillian is a JBoss Community Project and most of the developers are Red Hat Employees. Even so Arquillian may be used to run tests in most Java Application containers.
+NOTE: Arquillian is a JBoss Community Project and most of the developers are Red Hat Employees. Even so Arquillian may be used to run tests on most Java Application containers.
 
 '''
 
 === Lab
-Step 1 - Getting started by importing an exising project::
-
+Step 1 - Getting started by importing an existing project::
++
 Step 1.1 - Switch to use the package explorer:::
-The package view in JBoss Developer Studio offers a more compressed view of java project where source and test code are easier to access. To use it click on the `Package` tab
+The package view in JBoss Developer Studio offers a more compressed view of java project where source and test code are easier to access. To use it click on the `Package` tab.
 +
 image::images/02_01_clean_jbds.png["",600]
 
 Step 1.2 - Import the project:::
-We are now going to import a Maven project by `RIGHT CLICKING` in the Package view and select `Import`
+We are now going to import a Maven project by `RIGHT CLICKING` in the Package view and select `Import`.
 +
 image::images/02_02_package_view.png["",280]
 +
-When the Import Dialog appears select `Maven -> Existing Maven Project` and Click `Next`
+When the Import Dialog appears select `Maven -> Existing Maven Project` and click `Next`.
 +
 image::images/02_03_import.png["",300]
 +
@@ -41,7 +42,7 @@ In the pop-up file dialog navigate to `/home/student/exercises/projects/02_front
 +
 image::images/02_05_import.png["",400]
 +
-In the final step of the dialog verify that it automatically identified a single `pom.xml` and click `Finish`
+In the final step of the dialog verify that it automatically identified a single `pom.xml` and click `Finish`.
 +
 image::images/02_06_import.png["",300]
 +
@@ -75,7 +76,7 @@ Even if all the above alternatives only typically takes a couple of seconds to d
 +
 Using the LiveReload feature of JBoss Developer Studio we can do most of the deployments needed in a working day much faster and changes are reflected immediately.
 +
-NOTE: Not all changes can be deployed using the LiveReload fetaures, but periodically one will have to do Incremental or Full publish. However something like 9 out of 10 deployments are done with LiveReload it still saves a lot of time for the developers.
+NOTE: Not all changes can be deployed using the LiveReload features, but periodically one will have to do Incremental or Full publish. However something like 9 out of 10 deployments are done with LiveReload it still saves a lot of time for the developers.
 +
 To enable LiveReload one all one have to do is to right click on the deployed application in the server view and select `Show In -> Web Browser via LiveReload Server`
 +
@@ -89,7 +90,7 @@ This will automatically configure, create and start a LiveReload Server for us t
 +
 After a while firefox (which is the default browser in your lab environment) will open a page using the LiveReload Server.
 +
-NOTE: The LiveReload server is not using the standard port 8080 but are randomly assigninged to an available port above 56000.
+NOTE: The LiveReload server is not using the standard port 8080 but are randomly assigned to an available port above 56000.
 
 Step 5 - Using LiveReload::
 To see the LiveReload feature in action it's recommended that you place firefox and JBoss Developer Studio next to each other. In Gnome 3 (which is what you lab environment is using) you can grab a window by pressing down the mouse button on the title bar and drag the window to one of the sides. When you are at the edge of the window half the window should become gradient indicating that if you release the mouse here it will arrange the window to that half of the window.
@@ -134,7 +135,7 @@ This will execute all the tests that we have in that package and it will take so
 +
 What is happing right now is that each test actually deploys it's own version of the application and executes a couple of different tests.
 +
-- The `ServerSideMemberRegistrationTest.java` test will only deploy the server side components and execute it's tests inside the container to verify that a Member can be registered.
+The `ServerSideMemberRegistrationTest.java` test will only deploy the server side components and execute it's tests inside the container to verify that a Member can be registered.
 +
 .Code for deploying
 [source,java]
@@ -283,14 +284,13 @@ to
   ng-pattern="/^\+?[0-9]{10,12}$/"
 ----
 +
-NOTE: If you are unfamilar with regular expressings the first pattern says that number 0 to 9 are allowed between 10 and 12 times. The `^` character is used to indicate the start of string/row and `$` indicates the end. By adding `+?` we make it optionally for phonenumbers to start with a `+` sign. Also since `+` is a special characters in regular expressions we need to escape it using a back slash `\` before.
+NOTE: If you are unfamiliar with regular expressions the first pattern says that number 0 to 9 are allowed between 10 and 12 times. The `^` character is used to indicate the start of string/row and `$` indicates the end. By adding `+?` we make it optionally for phone numbers to start with a `+` sign. Also since `+` is a special characters in regular expressions we need to escape it using a back slash `\` before.
 +
 Now Rerun the tests again and make sure that everything is green.
 +
 image::images/02_22_testing.png["",250]
 +
-You can also verify by trying to add a user with an international phonenumber in the firefox browser.
-
+You can also verify by trying to add a user with an international phone number in the firefox browser.
 '''
 
 === Summary
@@ -302,6 +302,5 @@ In this exercise you've learned how to use LiveReload feature of JBoss Developer
 
 For more information, please have a look at the following articles and documents:
 
-* a
-* b
-* c
+* http://arquillian.org/[Arquillian]
+* https://access.redhat.com/documentation/en/red-hat-jboss-developer-studio/[Red Hat JBoss Developer Studio Documentation]

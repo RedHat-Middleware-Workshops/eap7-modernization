@@ -4,9 +4,9 @@
 
 Doing this exercise, participants will learn:
 
-* what is the Java Batch API and how it works
-* how to monitor Batches in Red Hat JBoss EAP 7
-* how to configure the "batch-jberet" subsystem
+* what is the Java Batch API and how it works.
+* how to monitor Batches in Red Hat JBoss EAP 7.
+* how to configure the "batch-jberet" subsystem.
 
 === Background information
 
@@ -26,7 +26,7 @@ Batch applications are broken down in a set of steps which specify their executi
 
 * *Chunk* steps process data by reading items from a source, applying some transformation/business logic to each item, and storing the results. Chunk steps operate on one item at a time and group the results into a chunk. The results are stored when the chunk reaches a configurable size. Chunk-oriented processing makes storing results more efficient and facilitates transaction demarcation.
 +
-Each chunk  is broken in three parts:
+Each chunk is broken in three parts:
 +
 ** *read* chunk part: used to read the single items from a source of data (database/fs/ldap etc.)
 ** *processor* chunk part: manipulates one item at a time using the logic defined by the application. (e.g. sorting, filtering data, transforming data etc.)
@@ -204,7 +204,7 @@ Enter the connection parameter for the created Batch data-source:
 +
 [cols="1,3", options="header"]
 |===
-2+|  BatchDS datasource
+2+| BatchDS datasource
 | connection-url | jdbc:h2:mem:batch;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
 | user | sa
 | password | sa
