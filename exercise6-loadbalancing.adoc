@@ -1,34 +1,111 @@
-== [Exercise 6] FLoad-balancing
+== [Exercise 6] Load-balancing
 
 === What you will learn
 
-Participants will learn how to ...
-
+Participants will learn the basis for setting up a cluster in JBoss EAP 7 and how to JBoss EAP 7 as a load balancer. In this exercise the participant use Ansible to configure and setup the cluster. However this lab will not cover details about Ansible, nor is previous knowledge of Ansible required to run this lab.
 
 === Background information
-
-Some background information on ...
 
 
 === Lab
 
-High-level description of the lab.
 
-Step 1 - Do something::
-Background for step 1.
+Step 1 - Reviewing the ansible setup::
+We are soon gonna use Ansible to configure the cluster in JBoss EAP 7, but before we kick-off the setup, let's review how the setup looks like.
++
+Ansible playbooks describes how different host are assigned different roles. Roles are broken down into different tasks.
++
+Because of limitations in the lab environment we are not going to use different different host, but instead we are going to configure a cluster in your local host.
++
+Let's first investigate the playbook.
++
+[source,yaml]
+----
+    - hosts: localhost
+      roles:
+        - jboss-eap-7
+----
++
+So your localhost will be assigned the role of jboss-eap-7. Let's investigate that as well.
++
+[source,yaml]
+----
+- name: Extract JBoss EAP 7  # <1>
+  unarchive: src={{jboss_zip_path}} dest={{ ansible_user_dir }} owner={{jboss_user}} group={{jboss_group}} creates={{jboss_home}} copy=no
+
+- name: Create admin user for JBoss # <2>
+  shell: "export JBOSS_HOME={{ jboss_home }}; {{ jboss_home }}/bin/add-user.sh -u admin -p {{ jboss_admin_password }} -s"
+
+- name: Add demo application # <3>
+  copy: src={{item}} dest={{ ansible_user_dir }} owner={{ jboss_user }} group={{ jboss_group }} mode=644
+  with_items:
+    - clustering-demo.war
+
+- name: Add CLI configuration script # <4>
+  template: src=mod-cluster.cli dest={{ ansible_user_dir }} owner={{ jboss_user }} group={{ jboss_group }} mode=644
+
+- name: Apply configuration # <5>
+  shell: "export JBOSS_HOME={{ jboss_home }}; {{ jboss_home }}/bin/jboss-cli.sh --file={{ ansible_user_dir }}/mod-cluster.cli"
+
+----
+<1> In this step the JBoss EAP 7 zip will be extracted, but only if it doesn't previously exists
+<2> This task will create an administrative user.
+<3> Adding the a WAR application
+<4> In this step we will use the template feature of Ansible to add a CLI script
+<5> In this step we execute the CLI script.
+
+
+
+Step 2 - Review the CLI script::
+As we can see the Ansible script extracts and adds a administrative user, and then the configuration is a applied via an CLI script.
++
+Let's look at the most important things action in the CLI script,
 +
 [source,bash]
 ----
-$ ls -elf
-----
+embed-host-controller # <1>
 
-Step 2 - Do something else::
-Background for step 2.
-+
-[source,bash]
+/profile=ha:clone(to-profile=backend) # <2>
+/profile=default:clone(to-profile=load-balancer) # <3>
+
+/profile=backend/subsystem=modcluster/mod-cluster-config=configuration:write-attribute(name=advertise-security-key, value=mypassword) # <4>
+
+
+/profile=load-balancer/subsystem=undertow/configuration=filter/mod-cluster=modcluster:add(management-socket-binding=http, advertise-socket-binding=modcluster, security-key=mypassword) # <5>
+
+# Add a server group called backend-servers
+/server-group=backend-servers:add(profile=backend, socket-binding-group=ha-sockets) # <6>
+
+# Add server config for backend1 and backend2 using 100 and 200 binding port offset.
+/host=master/server-config=backend1:add(group=backend-servers, socket-binding-port-offset=100) # <7>
+/host=master/server-config=backend2:add(group=backend-servers, socket-binding-port-offset=200) # <7>
+
+
+# Add a modcluster filter to the undertow server that will use mulitcast to connect to backend servers
+/profile=load-balancer/subsystem=undertow/server=default-server/host=default-host/filter-ref=modcluster:add
+/socket-binding-group=standard-sockets/socket-binding=modcluster:add(multicast-port=23364, multicast-address=224.0.1.105) # <8>
+
+# Add the load-balancer server group
+/server-group=load-balancer:add(profile=load-balancer, socket-binding-group=standard-sockets # <9>
+
+# Add a load-balancer server to the load-balancer group
+/host=master/server-config=load-balancer:add(group=load-balancer) # <10>
+
+# Deploy the  application to the serviers in the backend-server group
+deploy {{ ansible_user_dir }}/clustering-demo.war --server-groups=backend-servers # <11>
+
 ----
-$ ls -elf
-----
+<1> Starts an embedded host controller so that we can configure the domain without actually starting it. For standalone the same command is `embed-server`. This feature is called Off-line CLI and is new in JBoss EAP 7
+<2> This command will clone the `ha` profile and create a new profile called `backend`. The backend servers will be based on `ha` profile since they are going to form a clusters
+<3> We also clone the `default` profile to a new profile called `load-balancer` since the load-balancer is not part of the cluster.
+<4> Configure the modcluster subsystem in the backend profile to use an advertise security key set to "mypassword"
+<5> Adding the mod-cluster filter to the undertow subsystem and configuring the advertise security key to "mypassword"
+<6> Create a server group called `backend-servers`
+<7> Create servers `backend1` and `backend2` in the `backend-servers` server group.
+<8> Add a modcluster filter to the undertow server that will use multicast to connect to backend servers
+<9> Add the load-balancer server group
+<10> Add a load-balancer server to the load-balancer group
+<11> Deploy an application to the backend servers.
 
 
 === Summary

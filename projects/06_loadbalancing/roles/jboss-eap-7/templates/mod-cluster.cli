@@ -1,40 +1,58 @@
 embed-host-controller
 if (outcome==failed) of /host=master/server-config=load-balancer:read-resource
+
+    # Clean out default servers
     /host=master/server-config=server-one:remove
     /host=master/server-config=server-two:remove
     /host=master/server-config=server-three:remove
     /server-group=main-server-group:remove
     /server-group=other-server-group:remove
 
-    /profile=ha/subsystem=modcluster/mod-cluster-config=configuration:write-attribute(name=advertise-security-key, value=mypassword)
+    # Clone the HA profile to a new profile called backend.
+    /profile=ha:clone(to-profile=backend)
+
+    # Clone the default profile to be used for load-balancer profile
+    /profile=default:clone(to-profile=load-balancer)
+
+    # Configure the modcluster subsystem in the backend profile to use an advertise security key set to "mypassword"
+    /profile=backend/subsystem=modcluster/mod-cluster-config=configuration:write-attribute(name=advertise-security-key, value=mypassword)
+
+    # Adding the mod-cluster filter to the undertow subsystem and configuring the advertise security key to "mypassword"
+    /profile=load-balancer/subsystem=undertow/configuration=filter/mod-cluster=modcluster:add(management-socket-binding=http, advertise-socket-binding=modcluster, security-key=mypassword)
 
     # Suppress warnings about Cluster Topology because of a known issue see https://issues.jboss.org/jira/browse/JBEAP-794
-    /profile=ha/subsystem=logging/logger=org.infinispan.topology.ClusterTopologyManagerImpl/:add(category=org.infinispan.topology.ClusterTopologyManagerImpl,level=ERROR)
+    /profile=backend/subsystem=logging/logger=org.infinispan.topology.ClusterTopologyManagerImpl/:add(category=org.infinispan.topology.ClusterTopologyManagerImpl,level=ERROR)
 
     # Suppress warnings about environment configuration since we are running in a limited lab environment.
-    /profile=ha/subsystem=logging/logger=org.jgroups.protocols.UDP/:add(category=org.jgroups.protocols.UDP,level=ERROR)
+    /profile=backend/subsystem=logging/logger=org.jgroups.protocols.UDP/:add(category=org.jgroups.protocols.UDP,level=ERROR)
 
+    # Add a server group called backend-servers
+    /server-group=backend-servers:add(profile=backend, socket-binding-group=ha-sockets)
 
-
-    /server-group=backend-servers:add(profile=ha, socket-binding-group=ha-sockets)
-
+    # Add server config for backend1 and backend2 using 100 and 200 binding port offset.
     /host=master/server-config=backend1:add(group=backend-servers, socket-binding-port-offset=100)
     /host=master/server-config=backend2:add(group=backend-servers, socket-binding-port-offset=200)
 
+    # Add a system-property called server.name to the server config. This system-property is used by the application.
     /host=master/server-config=backend1/system-property=server.name:add(boot-time=false, value=backend1)
     /host=master/server-config=backend2/system-property=server.name:add(boot-time=false, value=backend2)
 
 
-    /profile=default/subsystem=undertow/configuration=filter/mod-cluster=modcluster:add(management-socket-binding=http, advertise-socket-binding=modcluster, security-key=mypassword)
 
-    /profile=default/subsystem=undertow/server=default-server/host=default-host/filter-ref=modcluster:add
+    # Add a modcluster filter to the undertow server that will use mulitcast to connect to backend servers
+    /profile=load-balancer/subsystem=undertow/server=default-server/host=default-host/filter-ref=modcluster:add
     /socket-binding-group=standard-sockets/socket-binding=modcluster:add(multicast-port=23364, multicast-address=224.0.1.105)
 
-    /server-group=load-balancer:add(profile=default, socket-binding-group=standard-sockets)
+    # Add the load-balancer server group
+    /server-group=load-balancer:add(profile=load-balancer, socket-binding-group=standard-sockets)
+
+    # Add a load-balancer server to the load-balancer group
     /host=master/server-config=load-balancer:add(group=load-balancer)
 
+    # Deploy the  application to the serviers in the backend-server group
     deploy {{ ansible_user_dir }}/clustering-demo.war --server-groups=backend-servers
 
+    # Configure the servers to be auto-started
     /host=master/server-config=backend1:write-attribute(name=auto-start,value=true)
     /host=master/server-config=backend2:write-attribute(name=auto-start,value=true)
     /host=master/server-config=load-balancer:write-attribute(name=auto-start,value=true)
@@ -44,7 +62,7 @@ if (outcome==failed) of /host=master/server-config=load-balancer:read-resource
     /host=master/server-config=backend2/system-property=jboss.tx.node.id:add(boot-time=true, value=node02)
     /host=master/server-config=load-balancer/system-property=jboss.tx.node.id:add(boot-time=true, value=lb-01)
 
-    /profile=ha/subsystem=transactions:write-attribute(name=node-identifier,value="${jboss.tx.node.id}")
-    /profile=default/subsystem=transactions:write-attribute(name=node-identifier,value="${jboss.tx.node.id}")
+    /profile=backend/subsystem=transactions:write-attribute(name=node-identifier,value="${jboss.tx.node.id}")
+    /profile=load-balancer/subsystem=transactions:write-attribute(name=node-identifier,value="${jboss.tx.node.id}")
 
 end-if
