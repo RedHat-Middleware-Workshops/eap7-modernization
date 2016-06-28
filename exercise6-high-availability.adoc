@@ -1,4 +1,4 @@
-== [Exercise 6] Load-balancing
+== Exercise 6 - High availability
 
 === What you will learn
 
@@ -6,11 +6,13 @@ Participants will learn the basis for setting up a cluster in JBoss EAP 7 and ho
 
 === Background information
 
+image::images/06_04_high-availability.png[]
 
 === Lab
 
 
 Step 1 - Reviewing the ansible setup::
++
 We are soon gonna use Ansible to configure the cluster in JBoss EAP 7, but before we kick-off the setup, let's review how the setup looks like.
 +
 Ansible playbooks describes how different host are assigned different roles. Roles are broken down into different tasks.
@@ -54,12 +56,10 @@ So your localhost will be assigned the role of jboss-eap-7. Let's investigate th
 <4> In this step we will use the template feature of Ansible to add a CLI script
 <5> In this step we execute the CLI script.
 
-
-
 Step 2 - Review the CLI script::
 As we can see the Ansible script extracts and adds a administrative user, and then the configuration is a applied via an CLI script.
 +
-Let's look at the most important things action in the CLI script,
+Let's look at the most important actions in the CLI script,
 +
 [source,bash]
 ----
@@ -112,7 +112,7 @@ To run the ansible playbook open a terminal window and go to the exercise direct
 +
 [source,bash]
 ----
-$ cd exercise/projects/06_loadbalancing
+$ cd exercise/projects/06_high-availability
 $ ansible-playbook playbook.yml
 ----
 
