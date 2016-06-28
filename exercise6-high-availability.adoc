@@ -2,9 +2,51 @@
 
 === What you will learn
 
-Participants will learn the basis for setting up a cluster in JBoss EAP 7 and how to JBoss EAP 7 as a load balancer. In this exercise the participant use Ansible to configure and setup the cluster. However this lab will not cover details about Ansible, nor is previous knowledge of Ansible required to run this lab.
+Doing this exercise, participants will learn:
+
+* the basis for setting up a cluster in JBoss EAP 7
+* how to use JBoss EAP 7 as a load balancer.
+
+In this exercise participants will also use Ansible to configure and roll-out an high available setup. However this lab will neither cover details about Ansible, nor require previous knowledge of Ansible.
+
 
 === Background information
+
+=== Vocabulary
+
+Before we start, let go through some definitions related to clustering:
+
+* *member / node / process* : is part of one group and resides on one host.
+* *group / cluster* : has one/several member(s) spread on one/several host(s).
+
+There are three possible and supported clustering topologies:
+
+* *horizontal scaling* : nodes running on different machines
+* *vertical scaling* : nodes running on the same machine
+* *mixed scaling* : combination of horizontal and vertical topologies
+
+
+=== High availability subsystems
+
+The following Red Hat JBoss EAP subsystems are involved in implementing highly available applications:
+
+* *JGroups*
++
+JGroups is a toolkit for the underlying communication between nodes.
+Two main communication stacks are available in EAP: UDP (default) or TCP (no multicast)
+
+* *infinispan*
++
+Infinispan is used for data caching and object replication. In Red Hat JBoss  comes with 4 preconfigured caches (cluster, web, sfsb and hibernate).
+
+* *modcluster*
++
+mod_cluster is an httpd-based load balancer. Like mod_jk and mod_proxy, mod_cluster uses a communication channel to forward requests from httpd to one of a set of application server nodes.
+
+* *singleton*
+
+* *undertow*
+
 
 image::images/06_04_high-availability.png[]
 
@@ -91,7 +133,7 @@ embed-host-controller # <1>
 # Add a load-balancer server to the load-balancer group
 /host=master/server-config=load-balancer:add(group=load-balancer) # <10>
 
-# Deploy the  application to the serviers in the backend-server group
+# Deploy the application to the servers in the backend-server group
 deploy {{ ansible_user_dir }}/clustering-demo.war --server-groups=backend-servers # <11>
 
 ----
@@ -156,16 +198,16 @@ Step 6 - Performance testing::
 
 
 
-
 === Summary
 
-Brief summary around what we learned.
+*Brief summary around what we learned.*
 
 
 === Links
 
 For more information, please have a look at the following articles and documents:
 
-* a
-* b
-* c
+* http://infinispan.org/[Infinispan]
+* http://mod-cluster.jboss.org/[mod_cluster]
+* http://undertow.io/[Undertow]
+* http://jgroups.org/[JGroups]
