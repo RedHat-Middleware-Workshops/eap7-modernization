@@ -107,6 +107,55 @@ deploy {{ ansible_user_dir }}/clustering-demo.war --server-groups=backend-server
 <10> Add a load-balancer server to the load-balancer group
 <11> Deploy an application to the backend servers.
 
+Step 3 - Execute the Ansible playbook::
+To run the ansible playbook open a terminal window and go to the exercise directory and run the `ansible-playbook` command.
++
+[source,bash]
+----
+$ cd exercise/projects/06_loadbalancing
+$ ansible-playbook playbook.yml
+----
+
+Step 4 - Start the JBoss EAP 7 cluster::
+To start the cluster is as simple as starting the standalone version, since Ansible helped us configure everything all we need to do is to go to the `$JBOSS_HOME/bin` and execute `domain.sh` instead of `standalone.sh`
++
+[source,bash]
+----
+$ cd ~/jboss-eap-7.0/bin
+$ sh domain.sh
+----
+
+Step 4 - Verify the application in a browser::
+To verify the application open the following url in firefox http://localhost:8080/clustering-demo.
++
+image::images/06_01_clustering-demo.png["",400]
++
+Reload the page a couple of times and notices that the number of request increases, but that the backend-server is always the same. This is because our application is using sessions and mod_cluster is using session affinity (or sticky session).
+
+Step 5 - High availability::
+To test the high availability we can suspend the server that our session is connected to. In this step we will use backend-server1, but please you should use the same server that where listed in Step 4.
++
+To suspend the server follow the below steps
++
+. Open another tab to the admin console (http://localhost:9990)
+. Login with username `admin` and password `admin-123`
+. Click on `Runtime` tab
+. Browse Domain by `Server Groups` -> `backend-servers` -> `backend1`
+. Select `Suspend` from the drop down menu next to `backend1`
++
+image::images/06_02_suspend_backend1.png["",600]
++
+. Click on `Suspend Server`
++
+image::images/06_03_suspend_server.png["",400]
+. Reload the other firefox tab with the clustering-demo application
++
+If everything worked correctly the backend server should now change and the counter should continue from and not restart.
+
+Step 6 - Performance testing::
+
+
+
 
 === Summary
 
