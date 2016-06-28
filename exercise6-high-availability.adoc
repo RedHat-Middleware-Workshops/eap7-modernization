@@ -12,12 +12,13 @@ In this exercise participants will also use Ansible to configure and roll-out an
 
 === Background information
 
-=== Vocabulary
+==== Some vocabulary
 
 Before we start, let go through some definitions related to clustering:
 
-* *member / node / process* : is part of one group and resides on one host.
-* *group / cluster* : has one/several member(s) spread on one/several host(s).
+* *cluster* : set of server instances using a common communication channel to improve services availability by providing failover, fault-tolerance and scalability capabilities.
+
+* *member or node* : server instance residing on one host and being part of one cluster.
 
 There are three possible and supported clustering topologies:
 
@@ -25,35 +26,49 @@ There are three possible and supported clustering topologies:
 * *vertical scaling* : nodes running on the same machine
 * *mixed scaling* : combination of horizontal and vertical topologies
 
+NOTE: Load-balancing and clustering are often mixed-up. Load-balancing is just about dispatching the load between different nodes. Clustering focuses on replicating state between nodes to guarantee failover.
 
-=== High availability subsystems
+'''
+
+
+==== Subsystems
 
 The following Red Hat JBoss EAP subsystems are involved in implementing highly available applications:
 
 * *JGroups*
 +
 JGroups is a toolkit for the underlying communication between nodes.
-Two main communication stacks are available in EAP: UDP (default) or TCP (no multicast)
+Two main communication stacks are available in EAP: UDP (default) or TCP (no multicast).
++
+JGroup 4 is bundled with EAP 7. It uses a separate dedicated logical interface for clustering ("private"). JGroup 4 uses of NIO.2 and Java 8 features (e.g. CompletableFuture).
 
 * *infinispan*
 +
-Infinispan is used for data caching and object replication. In Red Hat JBoss  comes with 4 preconfigured caches (cluster, web, sfsb and hibernate).
+Infinispan is used for data caching and object replication. In Red Hat JBoss  comes with 4 preconfigured caches (cluster, web, SFSB and hibernate).
 
 * *modcluster*
 +
 mod_cluster is an httpd-based load balancer. Like mod_jk and mod_proxy, mod_cluster uses a communication channel to forward requests from httpd to one of a set of application server nodes.
 
 * *singleton*
++
+The singleton subsystem can be used for the deployment of applications as highly-available singletons.
 
-* *undertow*
+* *Undertow*
++
+Undertow is the new web server project integrated in EAP 7. It is a flexible and high performing Java web server providing NIO based blocking and non-blocking APIs.
 
+
+==== Architecture
+
+The following diagrams shows the lab setup, where JBoss EAP 7 is used as well as an application backend as a load-balancer:
 
 image::images/06_04_high-availability.png[]
 
+
 === Lab
 
-
-Step 1 - Reviewing the ansible setup::
+Step 1 - Reviewing the Ansible setup::
 +
 We are soon gonna use Ansible to configure the cluster in JBoss EAP 7, but before we kick-off the setup, let's review how the setup looks like.
 +
@@ -99,6 +114,7 @@ So your localhost will be assigned the role of jboss-eap-7. Let's investigate th
 <5> In this step we execute the CLI script.
 
 Step 2 - Review the CLI script::
++
 As we can see the Ansible script extracts and adds a administrative user, and then the configuration is a applied via an CLI script.
 +
 Let's look at the most important actions in the CLI script,
@@ -175,6 +191,7 @@ image::images/06_01_clustering-demo.png["",400]
 Reload the page a couple of times and notices that the number of request increases, but that the backend-server is always the same. This is because our application is using sessions and mod_cluster is using session affinity (or sticky session).
 
 Step 5 - High availability::
+
 To test the high availability we can suspend the server that our session is connected to. In this step we will use backend-server1, but please you should use the same server that where listed in Step 4.
 +
 To suspend the server follow the below steps
@@ -200,8 +217,7 @@ Step 6 - Performance testing::
 
 === Summary
 
-*Brief summary around what we learned.*
-
+In this lab, you learned the differences between clustering and load-balancing, as how to setup those on JBoss EAP 7.
 
 === Links
 
