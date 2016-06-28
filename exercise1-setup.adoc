@@ -1,4 +1,4 @@
-== [Exercise 1] Setup
+== Exercise 1 - Setup
 
 
 === What you will learn

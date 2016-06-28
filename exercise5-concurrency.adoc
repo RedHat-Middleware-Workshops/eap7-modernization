@@ -1,4 +1,4 @@
-== [Exercise 5] Java EE Concurrency Utilities
+== Exercise 5 - Java EE Concurrency Utilities
 
 === What you will learn
 

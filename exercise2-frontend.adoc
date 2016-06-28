@@ -1,4 +1,4 @@
-== [Exercise 2] Front-End
+== Exercise 2 - Front-End
 
 === What you will learn
 

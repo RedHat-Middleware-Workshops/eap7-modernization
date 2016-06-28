@@ -1,4 +1,4 @@
-== [Exercise 3] Batch Applications
+== Exercise 3 - Batch Applications
 
 === What you will learn
 

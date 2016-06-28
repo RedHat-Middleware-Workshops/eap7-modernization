@@ -1,4 +1,4 @@
-== [Exercise 4] Messaging with ActiveMQ Artemis
+== Exercise 4 - Messaging with ActiveMQ Artemis
 
 
 === What you will learn
