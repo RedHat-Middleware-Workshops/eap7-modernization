@@ -3,8 +3,8 @@ Thomas Qvarnstrom <tqvarnst@redhat.com>; Marc Zottner <mzottner@redhat.com>
 
 :sectnums!:
 :toc: left
-:revnumber: 0.4
-:revdate: 2016-06-25
+:revnumber: 0.5
+:revdate: 2016-06-27
 
 This repository is the used to develop the 2016 Red Hat Summit lab for JBoss EAP 7. The main authors of _{doctitle}_ is *{author}*, Red Hat and *{author_2}*, Red Hat and the current version ({revnumber}) was last updated on {revdate}.
 
@@ -28,17 +28,9 @@ The lab consists of several exercises walking the participant through basic and 
 
 Here is a short list for the available exercises:
 
-* https://github.com/tqvarnst/jboss-eap7-summit-lab/blob/master/exercise1-setup.adoc[Exercise 1 - Environment setup]
-* https://github.com/tqvarnst/jboss-eap7-summit-lab/blob/master/exercise2-frontend.adoc[Exercise 2 - Java EE 7 Front-end technologies]
-* https://github.com/tqvarnst/jboss-eap7-summit-lab/blob/master/exercise3-batch.adoc[Exercise 3 - Batch Applications]
-* https://github.com/tqvarnst/jboss-eap7-summit-lab/blob/master/exercise4-messaging.adoc[Exercise 4 - Messaging with ActiveMQ Artemis]
-* https://github.com/tqvarnst/jboss-eap7-summit-lab/blob/master/exercise5-concurrency.adoc[Exercise 5 - Java EE Concurrency Utilities]
-* https://github.com/tqvarnst/jboss-eap7-summit-lab/blob/master/exercise6-loadbalancing.adoc[Exercise 6 - Load-balancing]
-
-
-include::exercise1-setup.adoc[]
-include::exercise2-frontend.adoc[]
-include::exercise3-batch.adoc[]
-include::exercise4-messaging.adoc[]
-include::exercise5-concurrency.adoc[]
-include::exercise6-loadbalancing.adoc[]
+* link:exercise1-setup.adoc[Exercise 1 - Environment setup]
+* link:exercise2-frontend.adoc[Exercise 2 - Java EE 7 Front-end technologies]
+* link:exercise3-batch.adoc[Exercise 3 - Batch Applications]
+* link:exercise4-messaging.adoc[Exercise 4 - Messaging with ActiveMQ Artemis]
+* link:exercise5-concurrency.adoc[Exercise 5 - Java EE Concurrency Utilities]
+* link:exercise6-high-availability.adoc[Exercise 6 - High availability]
