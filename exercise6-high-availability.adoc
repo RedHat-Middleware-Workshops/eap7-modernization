@@ -170,7 +170,7 @@ To run the ansible playbook open a terminal window and go to the exercise direct
 +
 [source,bash]
 ----
-$ cd exercise/projects/06_high-availability
+$ cd exercises/projects/06_high-availability
 $ ansible-playbook playbook.yml
 ----
 
