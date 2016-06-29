@@ -153,6 +153,101 @@ image::images/06_03_suspend_server.png["",400]
 If everything worked correctly the backend server should now change and the counter should continue from and not restart.
 
 Step 6 - Performance testing::
+Now that we have seen how to setup JBoss EAP 7 for clustering and load balancing let's see if we can find the optimal number of servers for this hosts. For this we are going to use a performance tool from Apache HTTPD tools called `ab`.
++
+Before we do that we probably want to resume the server that we suspended in step 5. Then we can open a terminal window and run the following command in it.
++
+[source,bash]
+----
+$ curl -s http://localhost:8080/clustering-demo/?[1-10]
+----
++
+The output should look something like below and include responses from both backend1 and backend2
++
+[source,bash]
+----
+Server backend2
+Server backend1
+Server backend2
+Server backend1
+Server backend2
+Server backend1
+Server backend2
+Server backend1
+Server backend2
+Server backend1
+----
++
+Then we are ready to start the simple performance test. Execute the following command to put some load onto the server.
++
+[source,bash]
+----
+$ ab -n 10000 -c 100 -k http://localhost:8080/clustering-demo
+----
++
+This command uses 100 clients to post 100 request with a total of 10 000 request. When the test is done it's going to print a report that looks something like the one below.
++
+[source,bash]
+----
+This is ApacheBench, Version 2.3 <$Revision: 1430300 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient)
+Completed 1000 requests
+Completed 2000 requests
+Completed 3000 requests
+Completed 4000 requests
+Completed 5000 requests
+Completed 6000 requests
+Completed 7000 requests
+Completed 8000 requests
+Completed 9000 requests
+Completed 10000 requests
+Finished 10000 requests
+
+
+Server Software:        JBoss-EAP/7
+Server Hostname:        localhost
+Server Port:            8080
+
+Document Path:          /clustering-demo
+Document Length:        0 bytes
+
+Concurrency Level:      100
+Time taken for tests:   1.627 seconds
+Complete requests:      10000
+Failed requests:        0
+Write errors:           0
+Non-2xx responses:      10000
+Keep-Alive requests:    10000
+Total transferred:      1990000 bytes
+HTML transferred:       0 bytes
+Requests per second:    6146.27 [#/sec] (mean) # <1>
+Time per request:       16.270 [ms] (mean)
+Time per request:       0.163 [ms] (mean, across all concurrent requests)
+Transfer rate:          1194.44 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.2      0       3
+Processing:     4   16   8.4     13      63
+Waiting:        1   16   8.4     12      63
+Total:          4   16   8.5     13      65
+
+Percentage of the requests served within a certain time (ms)
+  50%     13
+  66%     15
+  75%     18
+  80%     21
+  90%     26
+  95%     34 # <2>
+  98%     44
+  99%     62
+ 100%     65 (longest request)
+----
+<1> This is the request per seconds that where processes which is also sometimes refered to as through put.
+<2> This table shows how the response times varies and typically a good number to report is how fast 95% the responses where. This means that 95% of your users will get their responses within this time.
 
 
 
