@@ -104,7 +104,7 @@ First build the managed-executor-service project as follows:
 [source,bash]
 ----
 # Move to the directory of the quickstart
-$ cd projects/04_concurrency/managed-executor-service
+$ cd ~/exercises/projects/04_concurrency/managed-executor-service
 # Clean and build the quickstart and generate the eclipse project
 $ mvn clean eclipse:clean eclipse:eclipse install
 # Displays the current path (useful for import in JBDS)

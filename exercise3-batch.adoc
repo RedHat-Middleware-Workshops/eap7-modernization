@@ -41,21 +41,19 @@ Each chunk is broken in three parts:
 
 This lab builds on the "batch-processing" quickstart of JBoss EAP 7. It simulates a file importation using batch jobs.
 
-
 Step 1 - Build the "batch-processing" quickstart project::
 +
 First build the batch-processing project as follows:
 +
 [source,bash]
 ----
-# Move to the directory of the quickstart
-$ cd projects/03_batch/batch-processing
-# Clean and build the quickstart and generate the eclipse project
-$ mvn clean eclipse:clean eclipse:eclipse install
-# Displays the current path (useful for import in JBDS)
-$ pwd
+$ cd ~/exercises/projects/03_batch/batch-processing # <1>
+$ mvn clean eclipse:clean eclipse:eclipse install # <2>
+$ pwd <3>
 ----
-+
+<1> Move to the directory of the quickstart.
+<2> Clean and build the quickstart and generate the eclipse project
+<3> Displays the current path (useful for import in JBDS)
 
 Step 2 - Import the project in JBoss Developer Studio (JBDS)::
 +
@@ -193,7 +191,7 @@ Step 8 - View the content of the job-repository::
 +
 Execute again a couple of batches on the deployed application (http://localhost:8080/jboss-batch-processing/), as described in step 5.
 +
-Deploy the "h2console.war" application available in "projects/03_batch/h2-console" to your running JBoss EAP 7.
+Deploy the "h2console.war" application available in "~/exercises/projects/03_batch/h2-console" to your running JBoss EAP 7.
 +
 Access the deployed h2console: http://localhost:8080/h2console.
 +

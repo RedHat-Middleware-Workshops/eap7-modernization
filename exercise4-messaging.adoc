@@ -61,13 +61,13 @@ First build the helloworld-mdb project as follows:
 +
 [source,bash]
 ----
-# Move to the directory of the quickstart
-$ cd projects/04_messaging/helloworld-mdb
-# Clean and build the quickstart and generate the eclipse project
-$ mvn clean eclipse:clean eclipse:eclipse install
-# Displays the current path (useful for import in JBDS)
-$ pwd
+$ cd ~/exercises/projects/04_messaging/helloworld-mdb # <1>
+$ mvn clean eclipse:clean eclipse:eclipse install # <2>
+$ pwd <3>
 ----
+<1> Move to the directory of the quickstart.
+<2> Clean and build the quickstart and generate the eclipse project
+<3> Displays the current path (useful for import in JBDS)
 +
 Then open JBoss Developer Studio (desktop shortcut).
 +
