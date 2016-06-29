@@ -40,7 +40,7 @@ Some key facts about Artemis:
 * High-performance NIO Journal
 * Supports many messaging protocols (Core, AMQP, STOMP, MQTT, OpenWire, HornetQ)
 
-Note: STOMP, MQTT, AMQP are currently not supported in EAP 7.0.
+NOTE: STOMP, MQTT, AMQP are currently not supported in EAP 7.0.
 
 The following picture show the High-level architecture of ArtemisMQ:
 
@@ -134,16 +134,17 @@ Step 4 - Deploy the application::
 +
 You have two options for deploying the "jboss-helloworld-mdb.war" binary:
 +
-* Option 1: maven
+* *Option 1: maven*
 +
 [source,bash]
 ----
-# Open a command prompt and navigate to the root of the helloworld-mdb directory:
-$ cd projects/04_messaging/helloworld-mdb
-# Compile and deploy the application
+$ cd ~/exercises/projects/04_messaging/helloworld-mdb
 $ mvn clean install wildfly:deploy
 ----
-* Option 2: JBDS
+<1> Open a command prompt and navigate to the root of the helloworld-mdb directory.
+<2> Compile and deploy the application.
++
+* *Option 2: JBDS*
 +
 Right click on "/helloworld-mdb/target/jboss-helloworld-mdb.war" and select "Mark as Deployable"
 
@@ -183,13 +184,13 @@ Make sure that your Red Hat JBoss EAP 7 instance is started using the standalone
 [source,bash]
 ----
 $ cd $JBOSS_HOME/bin
-# Connect to Red Hat JBoss EAP 7 using the Command Line Interface (CLI)
-$ ./jboss-cli.sh --connect
-# Creates a JMS queue called "testQueue"
-[standalone@localhost:9990 /] jms-queue add --queue-address=testQueue --entries=queue/test,java:jboss/exported/jms/queue/test
-# Reload the configuration. This step is optional.
-[standalone@localhost:9990 /] :reload()
+$ ./jboss-cli.sh --connect # <1>
+[standalone@localhost:9990 /] jms-queue add --queue-address=testQueue --entries=queue/test,java:jboss/exported/jms/queue/test # <2>
+[standalone@localhost:9990 /] :reload() # <3>
 ----
+<1> Connect to Red Hat JBoss EAP 7 using the Command Line Interface (CLI)
+<2> Creates a JMS queue called "testQueue"
+<3> Reload the configuration. This step is optional.
 +
 Open then the JBoss EAP 7 http://localhost:9990/console/[management console] under "Configuration -> Subsystems -> Messaging - ActiveMQ -> default" and click on "Queues/Topics".
 +
@@ -209,17 +210,17 @@ Step 8 - Execute the JMS client::
 +
 In order to start the JMS external client and to produce and consume messages, you have the choice between two options:
 +
-* Option 1: using maven
+* *Option 1: using maven*
 +
 [source,bash]
 ----
-# Open a command prompt and navigate to the root of the helloworld-jms directory:
-$ cd projects/04_messaging/helloworld-jms
-# Compile and execute the quickstart
-$ mvn clean compile exec:java
+$ cd ~/exercises/projects/04_messaging/helloworld-jms # <1>
+$ mvn clean compile exec:java # <2>
 ----
+<1> Open a command prompt and navigate to the root of the helloworld-jms directory
+<2> Compile and execute the quickstart
 +
-* Option 2: using JBDS
+* *Option 2: using JBDS*
 +
 Open the "HelloWorldJMSClient" class. Then right click and select "Run as -> Java application"
 +
@@ -268,9 +269,10 @@ To add the application user, open a command prompt and type the following comman
 [source,bash]
 ----
 $ cd $JBOSS_HOME/bin
-# Connect to Red Hat JBoss EAP 7 using the Command Line Interface (CLI)
-$ ./add-user.sh -a -u 'quickstartUser' -p 'quickstartPwd1!' -g 'guest'
+$ ./add-user.sh -a -u 'quickstartUser' -p 'quickstartPwd1!' -g 'guest' # <1>
 ----
+<1> Connect to Red Hat JBoss EAP 7 using the Command Line Interface (CLI)
+
 +
 Now try again to run the Step 7. You should get an output like the following one:
 +
