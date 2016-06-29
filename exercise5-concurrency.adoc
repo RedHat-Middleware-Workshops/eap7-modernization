@@ -37,7 +37,7 @@ The Context Service is a concurrency utility which creates contextual proxies fr
 
 * *Thread Factory* (`javax.enterprise.concurrent.ManagedThreadFactory`)
 +
-The Managed Thread Factory allows Java EE applications to create new threads. WildFly Managed Thread Factory instances may also, optionally, use a Context Service instance to propagate the Java EE application thread’s context to the new threads. Instance creation is done through the EE subsystem, by editing the subsystem XML configuration:
+The Managed Thread Factory allows Java EE applications to create new threads. The Managed Thread Factory instances may also, optionally, use a Context Service instance to propagate the Java EE application thread’s context to the new threads. Instance creation is done through the EE subsystem, by editing the subsystem XML configuration:
 +
 [source,xml]
 ----
@@ -52,7 +52,7 @@ The Managed Thread Factory allows Java EE applications to create new threads. Wi
 
 * *Executor* (`javax.enterprise.concurrent.ManagedExecutorService`)
 +
-The Managed Executor Service is the Java EE adaptation of Java SE Executor Service, providing to Java EE applications the functionality of asynchronous task execution. WildFly is responsible to manage the lifecycle of Managed Executor Service instances, which are specified through the EE subsystem XML configuration:
+The Managed Executor Service is the Java EE adaptation of Java SE Executor Service, providing to Java EE applications the functionality of asynchronous task execution. JBoss EAP 7 is responsible to manage the lifecycle of Managed Executor Service instances, which are specified through the EE subsystem XML configuration:
 +
 [source,xml]
 ----
@@ -73,7 +73,7 @@ The Managed Executor Service is the Java EE adaptation of Java SE Executor Servi
 
 * *Scheduled Executor* (`javax.enterprise.concurrent.ManagedScheduledExecutorService`)
 +
-The Managed Scheduled Executor Service is the Java EE adaptation of Java SE Scheduled Executor Service, providing to Java EE applications the functionality of scheduling task execution. WildFly is responsible to manage the lifecycle of Managed Scheduled Executor Service instances, which are specified through the EE subsystem XML configuration:
+The Managed Scheduled Executor Service is the Java EE adaptation of Java SE Scheduled Executor Service, providing to Java EE applications the functionality of scheduling task execution. JBoss EAP 7 is responsible to manage the lifecycle of Managed Scheduled Executor Service instances, which are specified through the EE subsystem XML configuration:
 +
 [source,xml]
 ----

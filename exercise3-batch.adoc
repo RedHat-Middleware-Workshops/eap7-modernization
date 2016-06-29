@@ -193,7 +193,7 @@ Execute again a couple of batches on the deployed application (http://localhost:
 +
 Deploy the "h2console.war" application available in "~/exercises/projects/03_batch/h2-console" to your running JBoss EAP 7.
 +
-Access the deployed h2console: http://localhost:8080/h2console.
+Access the deployed h2console: http://localhost:8080/h2console
 +
 image::images/03_07_h2.png["h2console login",600]
 
