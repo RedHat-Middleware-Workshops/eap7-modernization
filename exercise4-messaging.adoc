@@ -1,4 +1,4 @@
-== Exercise 4 - Messaging with ActiveMQ Artemis
+== Exercise 4 - Messaging with Artemis
 
 
 === What you will learn
@@ -207,6 +207,10 @@ Follow the instructions described in the Step 1 to build and import the "hellowo
 
 
 Step 8 - Execute the JMS client::
++
+Now it is time to execute a JMS client that will connect to the queue.
++
+WARNING: Executing the client at this stage will generate an exception like "Unable to validate user: quickstartUser". This is perfectly normal at this stage.
 +
 In order to start the JMS external client and to produce and consume messages, you have the choice between two options:
 +

@@ -31,6 +31,6 @@ Here is a short list for the available exercises:
 * link:exercise1-setup.adoc[Exercise 1 - Environment setup]
 * link:exercise2-frontend.adoc[Exercise 2 - Java EE 7 Front-end technologies]
 * link:exercise3-batch.adoc[Exercise 3 - Batch Applications]
-* link:exercise4-messaging.adoc[Exercise 4 - Messaging with ActiveMQ Artemis]
+* link:exercise4-messaging.adoc[Exercise 4 - Messaging with Artemis]
 * link:exercise5-concurrency.adoc[Exercise 5 - Java EE Concurrency Utilities]
 * link:exercise6-high-availability.adoc[Exercise 6 - High availability]

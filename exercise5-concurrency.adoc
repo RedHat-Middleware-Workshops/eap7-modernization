@@ -172,7 +172,7 @@ Right click on the project or individual classes and select Run As -> JUnit Test
 
 Step 6 - Investigate the results::
 +
-Review the console output and relate it to the code. You should see log messages like the following:
+Review the JBoss EAR 7 console log output and relate it to the code. You should see log messages like the following:
 +
 [source,bash]
 ----
