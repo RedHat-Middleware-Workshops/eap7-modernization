@@ -58,6 +58,16 @@ sh add-user.sh -u admin -p admin-123 -s
 +
 NOTE: This command will silently add an administrative user with username "admin" and password "admin-123". If you omit both arguments, `add-user.sh` will prompt for the information needed.
 
+Step 1.2 - Set the JBOSS_HOME environment variable:::
+
+Set your JBOSS_HOME environment variable by executing the following commands in a terminal:
++
+[source,bash]
+----
+export JBOSS_HOME="~/jboss-eap-7.0"
+echo "export JBOSS_HOME=${JBOSS_HOME}" >> ~/.bash_profile
+----
+
 '''
 
 Step 2 - Verify the installation::
