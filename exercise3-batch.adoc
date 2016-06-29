@@ -59,7 +59,7 @@ Step 2 - Import the project in JBoss Developer Studio (JBDS)::
 +
 Open JBoss Developer Studio (desktop shortcut).
 +
-Import the maven project you just built. (File -> Import -> Existing Projects into Workspace -> Next -> Paste "root directory") -> Finish)
+Import the maven project you just built. (File -> Import -> Existing Projects into Workspace -> Next -> Paste the project path from (3) ) -> Finish)
 +
 image::images/03_01_import.png["JBDS import (1/2)",600]
 +
