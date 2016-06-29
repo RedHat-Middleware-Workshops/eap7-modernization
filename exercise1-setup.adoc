@@ -64,7 +64,7 @@ Set your JBOSS_HOME environment variable by executing the following commands in 
 +
 [source,bash]
 ----
-export JBOSS_HOME="~/jboss-eap-7.0"
+export JBOSS_HOME="/home/student/jboss-eap-7.0"
 echo "export JBOSS_HOME=${JBOSS_HOME}" >> ~/.bash_profile
 ----
 
