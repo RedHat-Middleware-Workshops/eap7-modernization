@@ -244,7 +244,7 @@ to
     private static final String NEW_MEMBER_PHONE = "+1234567890";
 ----
 +
-3. Change row 59 of `ClientSideMemberRegistrationTest.java`
+3. Change row 124 of `ClientSideMemberRegistrationTest.java`
 +
 [source,java]
 ----
