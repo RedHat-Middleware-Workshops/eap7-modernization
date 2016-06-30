@@ -187,7 +187,7 @@ $ sh domain.sh
 ----
 
 Step 4 - Verify the application in a browser::
-To verify the application open the following url in firefox http://localhost:8080/clustering-demo.
+To verify the application open the following url in firefox http://localhost:8080/clustering-demo/index.jsp
 +
 image::images/06_01_clustering-demo.png["",400]
 +
