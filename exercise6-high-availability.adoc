@@ -68,6 +68,9 @@ image::images/06_04_high-availability.png[]
 
 === Lab
 
+WARNING: Please make sure that your JBoss Developer Studio is closed and all local JBoss are not running when you start this lab. A quick way for doing this is to run the following command:
+`killall java`
+
 Step 1 - Reviewing the Ansible setup::
 +
 We are soon gonna use Ansible to configure the cluster in JBoss EAP 7, but before we kick-off the setup, let's review how the setup looks like.
