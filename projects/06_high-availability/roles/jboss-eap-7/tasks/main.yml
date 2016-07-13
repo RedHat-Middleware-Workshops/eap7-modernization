@@ -4,7 +4,7 @@
   unarchive: src={{jboss_zip_path}} dest={{ ansible_user_dir }} owner={{jboss_user}} group={{jboss_group}} creates={{jboss_home}} copy=no
 
 - name: Create admin user for JBoss
-  shell: "export JBOSS_HOME={{ jboss_home }}; {{ jboss_home }}/bin/add-user.sh -u admin -p {{ jboss_admin_password }} -s"
+  shell: "export JBOSS_HOME={{ jboss_home }}; {{ jboss_home }}/bin/add-user.sh -u {{ jboss_admin_username }} -p {{ jboss_admin_password }} -s"
 
 - name: Add demo application
   copy: src={{item}} dest={{ ansible_user_dir }} owner={{ jboss_user }} group={{ jboss_group }} mode=644
