@@ -38,7 +38,7 @@ In the next dialog you need to select the root directory by clicking the `Browse
 +
 image::images/02_04_import.png["",300]
 +
-In the pop-up file dialog navigate to `/home/student/exercises/projects/02_frontend` by clicking on on `Home` shortcut to the left and then selecting exercises.
+In the pop-up file dialog navigate to `$HOME/exercises/projects/02_frontend` by clicking on on `Home` shortcut to the left and then selecting exercises.
 +
 image::images/02_05_import.png["",400]
 +
