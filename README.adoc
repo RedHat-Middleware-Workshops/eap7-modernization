@@ -1,14 +1,14 @@
-= Modernize your Java EE applications with JBoss EAP 7 - Red Hat Summit 2016 Lab
-Thomas Qvarnstrom <tqvarnst@redhat.com>; Marc Zottner <mzottner@redhat.com>
+= Modernize your Java EE applications with JBoss EAP 7 - Red Hat Middleware Workshop
+Thomas Qvarnstrom <tqvarnst@redhat.com>; Marc Zottner <mzottner@redhat.com>; James Falkner <jfalkner@redhat.com>
 
 :sectnums!:
 :toc: left
-:revnumber: 0.5
-:revdate: 2016-06-27
+:revnumber: 0.6
+:revdate: 2016-07-15
 
-This repository is the used to develop the 2016 Red Hat Summit lab for JBoss EAP 7. The main authors of _{doctitle}_ is *{author}*, Red Hat and *{author_2}*, Red Hat and the current version ({revnumber}) was last updated on {revdate}.
+This repository is the used to develop the a workshop for modernizing apps with JBoss EAP 7 and Java EE 7. The main authors of _{doctitle}_ are *{author}*, Red Hat, *{author_2}* and *{author_3}*, Red Hat and the current version ({revnumber}) was last updated on {revdate}.
 
-== Lab Overview
+== Workshop Overview
 
 [cols="1,4", options="header"]
 |===
@@ -22,9 +22,9 @@ This repository is the used to develop the 2016 Red Hat Summit lab for JBoss EAP
 
 == Introduction
 
-This is a self-paced lab, aimed at developers using, or wanting to use, Red Hat JBoss Enterprise Application Platform 7.
+This workshop can be a self-paced or instructor-led hands-on workshop, aimed at developers using, or wanting to use, Red Hat JBoss Enterprise Application Platform 7.
 
-The lab consists of several exercises walking the participant through basic and new features of Red Hat JBoss EAP 7.
+The workshop consists of several exercises walking the participant through basic and new features of Red Hat JBoss EAP 7.
 
 Here is a short list for the available exercises:
 
